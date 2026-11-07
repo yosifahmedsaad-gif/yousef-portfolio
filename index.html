@@ -532,7 +532,7 @@
       <!-- Transparent Character Cutout Directly in Front of "PORTFOLIO" -->
       <div id="hero-avatar-wrap" style="position:relative;z-index:20;margin-top:clamp(-255px,-18vw,-110px);display:flex;align-items:flex-end;justify-content:center;pointer-events:none;user-select:none;transition:transform 0.15s ease-out;">
         <div style="position:absolute;top:30%;width:260px;height:260px;border-radius:999px;background:rgba(212,175,55,0.3);filter:blur(55px);"></div>
-        <img id="hero-portrait-img" src="assets/images/avatar-emperor.png" data-hex-img="avatar-emperor.png" onerror="this.onerror=null;this.src='./avatar-emperor.png';" alt="Yousef Saad" style="position:relative;z-index:10;width:clamp(290px,34vw,460px);height:auto;object-fit:contain;filter:drop-shadow(0 25px 55px rgba(0,0,0,0.95));" />
+        <img id="hero-portrait-img" src="assets/images/character-portrait.png" data-hex-img="character-portrait.png" onerror="if (this.src.endsWith('character-portrait.png')) { this.onerror = null; this.src = 'assets/images/portrait-original.jpg'; } else if (this.src.endsWith('portrait-original.jpg')) { this.onerror = null; this.src = './avatar-emperor.png'; }" alt="Yousef Saad" style="position:relative;z-index:10;width:clamp(290px,34vw,460px);height:auto;object-fit:contain;filter:drop-shadow(0 25px 55px rgba(0,0,0,0.95));" />
         <div style="position:absolute;inset-inline:0;bottom:0;height:90px;z-index:20;background:linear-gradient(180deg,transparent 0%,rgba(3,3,5,0.85) 70%,#030305 100%);"></div>
       </div>
     </div>
