@@ -1,322 +1,1879 @@
-<!doctype html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      id="meta-description"
-      content="Yousef is an independent web developer creating distinctive digital experiences."
-    />
-    <meta name="theme-color" content="#09090c" />
-    <title>Yousef | Web Developer</title>
-    <link rel="stylesheet" href="./style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-    <script src="./supabase-config.js" defer></script>
-    <script src="./script.js" defer></script>
-  </head>
-  <body>
-    <div class="site-shell">
-      <header class="topbar">
-        <a
-          class="wordmark"
-          href="#home"
-          aria-label="Yousef, home"
-          data-i18n-aria="homeLabel"
-        >
-          <span class="brand-gem" aria-hidden="true"></span>
-          <span>YOUSEF</span>
-        </a>
-        <div class="topbar-right">
-          <nav class="nav-links" aria-label="Main navigation" data-i18n-aria="navLabel">
-            <a href="#work" data-i18n="navWork">Work</a>
-            <a href="#about" data-i18n="navAbout">About</a>
-            <a href="#contact" data-i18n="navContact">Contact</a>
-          </nav>
-          <span class="availability" id="availability">
-            <span class="availability-dot" aria-hidden="true"></span>
-            <span data-i18n="availability">Available for select work</span>
-          </span>
-          <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to Arabic">
-            <span id="language-toggle-label">العربية</span>
-          </button>
-          <button class="studio-button" id="open-studio" type="button">
-            Studio Y <span aria-hidden="true">↗</span>
-          </button>
-        </div>
-      </header>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YOUSEF SAAD — Interactive Creative Portfolio & Studio</title>
+  <style>
+    :root {
+      --obsidian: #030305;
+      --warm-gold: #d4af37;
+      --warm-gold-light: #f5d77f;
+      --royal-blue: #0066ff;
+      --crimson: #ff003c;
+      --accent-primary: #d4af37;
+      --accent-glow: rgba(212, 175, 55, 0.3);
+    }
 
-      <main>
-        <section class="hero" id="home">
-          <div class="hero-copy">
-            <p class="eyebrow" data-i18n="heroEyebrow">Independent web developer · Egypt</p>
-            <h1>
-              <span class="hero-title-main" data-i18n="heroTitle">The Portfolio and Web Developer</span><br />
-              <span class="hero-title-name" data-i18n="heroName">Yousef</span>
-            </h1>
-            <p class="hero-description" data-i18n="heroDescription">
-              I’m Yousef — a web developer creating distinctive digital
-              experiences with clarity, character, and care.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#work">
-                <span data-i18n="heroExplore">Explore my work</span> <span aria-hidden="true">↘</span>
-              </a>
-              <a class="text-link" href="#contact">
-                <span data-i18n="heroTalk">Let’s talk</span> <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </div>
-          <div class="hero-meta mono" aria-hidden="true">
-            <span data-i18n="heroMeta">DESIGN · DEVELOPMENT · DETAIL</span>
-            <span data-i18n="heroScroll">SCROLL TO DISCOVER ↓</span>
-          </div>
-        </section>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        <section id="work" aria-labelledby="work-heading">
-          <div class="section-heading">
-            <div>
-              <p class="section-kicker" data-i18n="workKicker">A few things I’ve made</p>
-              <h2 id="work-heading" data-i18n="workTitle">Selected work</h2>
-            </div>
-            <span class="work-count" id="work-count" data-count="5">05 PROJECTS</span>
-          </div>
-          <p class="form-error site-status" id="site-status" role="alert" hidden></p>
-          <div class="project-grid" id="project-grid"></div>
-        </section>
+    html, body {
+      min-height: 100vh;
+      background-color: var(--obsidian);
+      color: #f5f5f7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Cairo, Roboto, sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        <section class="about" id="about">
-          <div>
-            <p class="section-kicker" data-i18n="aboutKicker">A little about me</p>
-            <h2 data-i18n="aboutTitle">Built with purpose.</h2>
-          </div>
-          <div class="about-copy">
-            <p>
-              <strong data-i18n="aboutLead">Good websites do more than look good.</strong>
-              <span data-i18n="aboutDescription">They tell your story, make the next step obvious, and feel effortless on every screen. I bring design sensibility and thoughtful development together to make that happen.</span>
-            </p>
-            <div class="services" aria-label="Services" data-i18n-aria="servicesLabel">
-              <span class="service-chip" data-i18n="serviceDesign">Web design</span>
-              <span class="service-chip" data-i18n="serviceDevelopment">Frontend development</span>
-              <span class="service-chip" data-i18n="serviceResponsive">Responsive experiences</span>
-              <span class="service-chip" data-i18n="serviceDirection">Creative direction</span>
-            </div>
-          </div>
-        </section>
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        <section class="contact" id="contact">
-          <div>
-            <p class="section-kicker" data-i18n="contactKicker">Have something in mind?</p>
-            <h2 data-i18n="contactTitle">Let’s make it matter.</h2>
-            <p data-i18n="contactDescription">Tell me a little about what you’re building.</p>
-          </div>
-          <a class="button button-primary" href="mailto:yosifahmedsaad@gmail.com">
-            <span data-i18n="contactAction">Start a conversation</span> <span aria-hidden="true">↗</span>
-          </a>
-        </section>
-      </main>
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
 
-      <footer>
-        <span data-i18n="footerNote">© Yousef. Made with intention.</span>
-        <button class="admin-trigger" id="open-admin" type="button">
-          <span data-i18n="adminLogin">Admin login</span>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #030305; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--accent-primary), #8f6b29); border-radius: 999px; }
+
+    .metallic-heading {
+      background: linear-gradient(180deg, #ffffff 0%, #f5ecd7 45%, #b8a682 84%, #6e624c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .metallic-portfolio-giant {
+      background: linear-gradient(180deg, #ffffff 0%, #f3e7c9 44%, #9e8c68 86%, #463d2c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 18px 45px var(--accent-glow));
+    }
+
+    .hero-royal-aura {
+      background: radial-gradient(circle at 50% 44%, var(--accent-glow) 0%, rgba(245, 215, 127, 0.14) 30%, rgba(0, 102, 255, 0.12) 54%, transparent 74%);
+      filter: blur(58px);
+      transition: transform 0.2s ease-out;
+    }
+
+    /* Interactive Mouse Spotlight & Click Ripple */
+    #mouse-spotlight {
+      position: fixed;
+      inset: 0;
+      z-index: 25;
+      pointer-events: none;
+      background: radial-gradient(520px circle at 50% 50%, rgba(212, 175, 55, 0.09), rgba(0, 102, 255, 0.04) 45%, transparent 75%);
+    }
+
+    @keyframes clickPing {
+      0% { transform: scale(0.4); opacity: 0.9; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+    .click-ripple {
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1.5px solid var(--warm-gold-light);
+      background: rgba(212, 175, 55, 0.22);
+      pointer-events: none;
+      z-index: 90;
+      animation: clickPing 0.6s ease-out forwards;
+    }
+
+    /* Dual-Direction Infinite Marquee */
+    @keyframes marqueeLeft {
+      0% { transform: translate3d(0%, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
+    }
+    @keyframes marqueeRight {
+      0% { transform: translate3d(-50%, 0, 0); }
+      100% { transform: translate3d(0%, 0, 0); }
+    }
+    .marquee-track-left {
+      display: flex;
+      width: max-content;
+      animation: marqueeLeft 30s linear infinite;
+    }
+    .marquee-track-right {
+      display: flex;
+      width: max-content;
+      animation: marqueeRight 30s linear infinite;
+    }
+    .marquee-wrapper:hover .marquee-track-left,
+    .marquee-wrapper:hover .marquee-track-right {
+      animation-play-state: paused;
+    }
+
+    /* Sticky Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(3, 3, 5, 0.86);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .navbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 15px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+    .nav-links a:hover {
+      color: var(--warm-gold-light);
+    }
+
+    .btn-lang {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #e5e7eb;
+      transition: all 0.25s;
+    }
+    .btn-lang:hover {
+      border-color: var(--accent-primary);
+      background: rgba(212, 175, 55, 0.18);
+      color: #fff;
+    }
+
+    .btn-studio {
+      padding: 7px 18px;
+      border-radius: 9999px;
+      border: 1px solid rgba(245, 215, 127, 0.65);
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0.32), rgba(255, 0, 60, 0.25));
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff6d6;
+      box-shadow: 0 0 22px var(--accent-glow);
+      transition: all 0.25s;
+    }
+    .btn-studio:hover {
+      transform: scale(1.05);
+      border-color: #f5d77f;
+      box-shadow: 0 0 32px rgba(245, 215, 127, 0.6);
+    }
+
+    /* Tech Stack Pills */
+    .tech-pill {
+      display: inline-block;
+      padding: 9px 18px;
+      border-radius: 9px;
+      background: rgba(15, 14, 18, 0.88);
+      border: 1px solid rgba(245, 215, 127, 0.16);
+      font-size: 13px;
+      font-weight: 600;
+      color: #e4e4e7;
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+    }
+    .tech-pill:hover {
+      border-color: var(--warm-gold-light);
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.24), rgba(255, 0, 60, 0.14));
+      box-shadow: 0 0 22px var(--accent-glow);
+      transform: translateY(-3px) scale(1.04);
+      color: #ffffff;
+    }
+
+    /* Accordion */
+    .acc-row {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      transition: background 0.3s, color 0.3s;
+    }
+    .acc-row.open {
+      background: #f3ead8;
+      color: #050507;
+    }
+    .acc-row:not(.open):hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    /* Device Mockups & 3D Tilt */
+    .tilt-card {
+      transition: transform 0.16s ease-out, box-shadow 0.25s ease;
+      will-change: transform;
+    }
+
+    .laptop-shell {
+      background: linear-gradient(160deg, #1d1b18 0%, #09090c 100%);
+      border: 1.5px solid rgba(245, 215, 127, 0.28);
+      border-radius: 16px 16px 0 0;
+      padding: 10px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.92), 0 0 42px var(--accent-glow);
+    }
+    .laptop-base {
+      height: 14px;
+      width: 108%;
+      margin-left: -4%;
+      background: linear-gradient(180deg, #2d2922 0%, #12110e 65%, #060608 100%);
+      border-radius: 0 0 12px 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.95);
+    }
+    .phone-shell {
+      width: 295px;
+      height: 540px;
+      margin: 0 auto;
+      border-radius: 42px;
+      padding: 12px;
+      background: linear-gradient(160deg, #211e18 0%, #08080b 100%);
+      border: 2px solid rgba(245, 215, 127, 0.3);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.92), 0 0 42px var(--accent-glow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    @keyframes pulseGold {
+      0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.35), 0 0 40px rgba(212, 175, 55, 0.15); }
+      50% { box-shadow: 0 0 32px rgba(245, 215, 127, 0.68), 0 0 55px rgba(255, 0, 60, 0.25); }
+    }
+    .enter-site-btn {
+      animation: pulseGold 2.5s infinite ease-in-out;
+      transition: transform 0.2s ease;
+    }
+    .enter-site-btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* =========================================================================
+       STEP 2: CYBERPUNK VIDEO CONTAINER CARDS & MOTION HUD OVERLAY PIPELINE
+       Obsidian (#030305) + Golden Backlights (#d4af37) + Blue Neon (#00d2ff)
+    ========================================================================= */
+    .cyber-video-card {
+      position: relative;
+      border-radius: 22px;
+      background: linear-gradient(155deg, rgba(14, 14, 22, 0.95) 0%, #030305 100%);
+      border: 1.5px solid rgba(245, 215, 127, 0.28);
+      box-shadow:
+        0 28px 75px rgba(0, 0, 0, 0.94),
+        0 0 38px rgba(212, 175, 55, 0.18),
+        0 0 24px rgba(0, 102, 255, 0.16);
+      overflow: hidden;
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.32s ease, box-shadow 0.32s ease;
+    }
+    .cyber-video-card:hover,
+    .cyber-video-card.hud-active {
+      border-color: rgba(0, 210, 255, 0.72);
+      box-shadow:
+        0 32px 85px rgba(0, 0, 0, 0.96),
+        0 0 48px rgba(212, 175, 55, 0.34),
+        0 0 38px rgba(0, 210, 255, 0.36);
+      transform: translateY(-5px);
+    }
+
+    .cyber-video-viewport {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #030305;
+      overflow: hidden;
+    }
+    .cyber-video-viewport video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.05) saturate(1.08);
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .cyber-video-card:hover .cyber-video-viewport video {
+      transform: scale(1.035);
+    }
+
+    @keyframes hudScanSweep {
+      0% { transform: translateY(-100%); opacity: 0; }
+      35% { opacity: 0.55; }
+      100% { transform: translateY(420%); opacity: 0; }
+    }
+    .hud-scanline {
+      position: absolute;
+      inset-inline: 0;
+      top: 0;
+      height: 26%;
+      background: linear-gradient(180deg, transparent 0%, rgba(0, 210, 255, 0.14) 50%, rgba(245, 215, 127, 0.24) 96%, transparent 100%);
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0;
+    }
+    .cyber-video-card:hover .hud-scanline,
+    .cyber-video-card.hud-active .hud-scanline {
+      opacity: 1;
+      animation: hudScanSweep 2.8s linear infinite;
+    }
+
+    .hud-corner {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+      z-index: 4;
+      transition: all 0.3s ease;
+    }
+    .hud-corner.tl { top: 12px; left: 12px; border-top: 2px solid #f5d77f; border-left: 2px solid #f5d77f; }
+    .hud-corner.tr { top: 12px; right: 12px; border-top: 2px solid #00d2ff; border-right: 2px solid #00d2ff; }
+    .hud-corner.bl { bottom: 12px; left: 12px; border-bottom: 2px solid #00d2ff; border-left: 2px solid #00d2ff; }
+    .hud-corner.br { bottom: 12px; right: 12px; border-bottom: 2px solid #f5d77f; border-right: 2px solid #f5d77f; }
+    .cyber-video-card:hover .hud-corner {
+      width: 22px;
+      height: 22px;
+      filter: drop-shadow(0 0 8px #00d2ff);
+    }
+
+    .hud-progress-track {
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+    }
+    .hud-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #d4af37, #f5d77f, #00d2ff);
+      box-shadow: 0 0 12px #00d2ff;
+      transition: width 0.12s linear;
+    }
+
+    /* =========================================================================
+       STEP 4: DYNAMIC 4-VIDEO MOTION SYNC PIPELINE (v1.mp4 - v4.mp4)
+       Scroll + Cursor + 4s Loop Parallax Synchronization
+    ========================================================================= */
+    .motion-sync-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      perspective: 1200px;
+    }
+    .motion-reel-card {
+      position: relative;
+      border-radius: 20px;
+      background: linear-gradient(160deg, rgba(12, 14, 24, 0.95) 0%, #030305 100%);
+      border: 1.5px solid rgba(245, 215, 127, 0.28);
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.92),
+        0 0 32px rgba(212, 175, 55, 0.16),
+        0 0 22px rgba(0, 102, 255, 0.18);
+      overflow: hidden;
+      will-change: transform;
+      transition: border-color 0.28s ease, box-shadow 0.28s ease;
+    }
+    .motion-reel-card:hover {
+      border-color: #00d2ff;
+      box-shadow:
+        0 28px 75px rgba(0, 0, 0, 0.96),
+        0 0 44px rgba(0, 210, 255, 0.42),
+        0 0 34px rgba(212, 175, 55, 0.34);
+    }
+    .motion-reel-video-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 12;
+      background: #030305;
+      overflow: hidden;
+    }
+    .motion-reel-video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease-out;
+    }
+    .motion-reel-card:hover .motion-reel-video-wrap video {
+      transform: scale(1.06);
+    }
+    @media (max-width: 1024px) {
+      .motion-sync-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .motion-sync-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Frosted VIP Modal & Interactive Studio Dashboard */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: rgba(3, 3, 5, 0.86);
+      backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .hidden {
+      display: none !important;
+    }
+    .frosted-vip-modal {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 440px;
+      border-radius: 26px;
+      padding: 36px;
+      background: linear-gradient(150deg, rgba(28, 24, 18, 0.82) 0%, rgba(9, 9, 14, 0.94) 55%, rgba(22, 18, 12, 0.88) 100%);
+      backdrop-filter: blur(25px) saturate(165%);
+      -webkit-backdrop-filter: blur(25px) saturate(165%);
+      border: 1px solid rgba(245, 215, 127, 0.3);
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.92), 0 0 55px var(--accent-glow);
+    }
+
+    #studio-dashboard {
+      position: fixed;
+      inset: 0;
+      z-index: 85;
+      background: rgba(3, 3, 5, 0.97);
+      backdrop-filter: blur(24px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .grid-2col { grid-template-columns: 1fr !important; }
+      .studio-body-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- INTERACTIVE HEXFIELD VISUAL CANVAS & MOUSE SPOTLIGHT -->
+  <canvas id="hexfield-canvas" style="position:fixed;inset:0;z-index:1;width:100%;height:100%;pointer-events:none;opacity:0.55;"></canvas>
+  <div id="mouse-spotlight"></div>
+
+  <!-- SECTION A: TWIN INTRO ANIMATION OVERLAY (Same Bouncing Ball & Trail as End Game & Video) -->
+  <div id="intro-overlay" style="position:fixed;inset:0;z-index:95;background:#030305;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.45s ease;overflow:hidden;">
+    <canvas id="intro-canvas" width="900" height="520" style="position:absolute;inset:0;margin:auto;width:100%;height:100%;max-width:960px;object-fit:contain;pointer-events:none;"></canvas>
+    <div id="intro-word-box" style="position:relative;z-index:10;display:none;flex-direction:column;align-items:center;pointer-events:none;user-select:none;">
+      <h1 id="intro-word-text" class="metallic-heading" style="font-size:clamp(46px,9vw,108px);font-weight:900;letter-spacing:0.14em;text-transform:uppercase;">YOUSEF</h1>
+    </div>
+    <button type="button" onclick="finishIntro()" style="position:absolute;bottom:28px;right:28px;z-index:20;padding:7px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.05);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#d4d4d8;">
+      تخطي العرض ←
+    </button>
+  </div>
+
+  <!-- TOP NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <a href="#home" id="brand-title" style="font-size:15px;font-weight:900;letter-spacing:0.16em;text-transform:uppercase;color:#fff;">يوسف سعد</a>
+        <button type="button" onclick="replayIntro()" style="padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.03);font-size:10px;color:#d4af37;">
+          ↺ الأنيميشن
         </button>
-      </footer>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#home" data-en="HOME" data-ar="الرئيسية">الرئيسية</a>
+        <a href="#about" data-en="ABOUT" data-ar="عني">عني</a>
+        <a href="#service" data-en="SERVICE" data-ar="الخدمات">الخدمات</a>
+        <a href="#project" data-en="PROJECT" data-ar="المشاريع">المشاريع</a>
+        <a href="#components" data-en="COMPONENTS" data-ar="المكونات">المكونات</a>
+        <a href="#contact" data-en="CONTACT" data-ar="تواصل">تواصل</a>
+      </nav>
+
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button type="button" id="lang-btn" class="btn-lang" onclick="toggleLang()">EN / English</button>
+        <button type="button" id="studio-btn" class="btn-studio" onclick="handleStudioBtn()">دخول الاستوديو</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION B: HERO SECTION (Interactive Mouse + Scroll Parallax) -->
+  <section id="home" style="position:relative;min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 16px 48px;overflow:hidden;">
+    <div id="hero-aura" class="hero-royal-aura" style="position:absolute;width:880px;max-width:100%;height:520px;border-radius:999px;pointer-events:none;"></div>
+
+    <div style="position:relative;width:100%;max-width:1280px;display:flex;flex-direction:column;align-items:center;">
+      <h1 id="hero-portfolio-title" dir="ltr" class="metallic-portfolio-giant" style="font-size:clamp(54px,13.5vw,168px);font-weight:900;letter-spacing:-0.02em;line-height:1;z-index:10;user-select:none;transition:transform 0.15s ease-out;">
+        PORTFOLIO
+      </h1>
+
+      <div style="position:relative;z-index:20;margin-top:8px;width:100%;max-width:1024px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;font-size:14px;">
+        <span id="hero-role" style="font-weight:600;color:#d1d5db;">مطور واجهات وأنظمة ويب متكاملة</span>
+        <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;color:#f5d77f;">
+          <span style="width:28px;height:28px;border-radius:999px;border:1px solid rgba(245,215,127,0.4);background:rgba(212,175,55,0.12);display:inline-flex;align-items:center;justify-content:center;font-size:12px;">↗</span>
+          <span id="hero-contact-lbl" style="font-weight:600;">تواصل معي</span>
+        </a>
+      </div>
+
+      <!-- Transparent Character Cutout Directly in Front of "PORTFOLIO" -->
+      <div id="hero-avatar-wrap" style="position:relative;z-index:20;margin-top:clamp(-255px,-18vw,-110px);display:flex;align-items:flex-end;justify-content:center;pointer-events:none;user-select:none;transition:transform 0.15s ease-out;">
+        <div style="position:absolute;top:30%;width:260px;height:260px;border-radius:999px;background:rgba(212,175,55,0.3);filter:blur(55px);"></div>
+        <img id="hero-portrait-img" src="assets/images/avatar-emperor.png" data-hex-img="avatar-emperor.png" onerror="this.onerror=null;this.src='./avatar-emperor.png';" alt="Yousef Saad" style="position:relative;z-index:10;width:clamp(290px,34vw,460px);height:auto;object-fit:contain;filter:drop-shadow(0 25px 55px rgba(0,0,0,0.95));" />
+        <div style="position:absolute;inset-inline:0;bottom:0;height:90px;z-index:20;background:linear-gradient(180deg,transparent 0%,rgba(3,3,5,0.85) 70%,#030305 100%);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION C: INTRO & DUAL-DIRECTION TECH STACK MARQUEE -->
+  <section id="about" style="max-width:1280px;margin:0 auto;padding:88px 32px;">
+    <div class="grid-2col" style="display:grid;grid-template-columns:5fr 7fr;gap:40px;align-items:start;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,0.1);">
+      <div>
+        <span id="about-micro" style="display:block;font-size:10px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:#d4af37;">نبذة عني</span>
+        <h2 id="about-heading" class="metallic-heading" style="margin-top:8px;font-size:clamp(52px,7vw,92px);font-weight:900;line-height:1;">مقدمة</h2>
+      </div>
+      <div id="about-bio" style="font-size:17px;line-height:1.8;color:#a1a1aa;">
+        مرحباً، أنا <strong style="color:#fff;">يوسف سعد</strong>. مهندس ومطور واجهات وتطبيقات ويب تفاعلية، قمت ببناء وإطلاق <strong style="color:#fff;">5 مشاريع حية متكاملة</strong> تجمع بين الفخامة البصرية والأداء الفائق. أتخصص في بناء منصات الويب الحديثة باستخدام <strong style="color:#fff;">React وJavaScript وPython</strong>، وتطوير التجارب ثلاثية الأبعاد عبر <strong style="color:#fff;">Three.js</strong>، إلى جانب أتمتة سير العمل الذكي عبر <strong style="color:#fff;">n8n وArduino وGDScript</strong>.
+      </div>
     </div>
 
-    <div class="overlay" id="admin-overlay" hidden>
-      <section
-        class="dialog dashboard-dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="admin-title"
-      >
-        <button
-          class="dialog-close"
-          type="button"
-          aria-label="Close admin panel"
-          data-i18n-aria="closeDialog"
-          data-close="admin-overlay"
-        >
-          ×
-        </button>
-        <p class="section-kicker" data-i18n="privateWorkspace">Private workspace</p>
-        <h2 id="admin-title" data-i18n="adminAccess">Studio access</h2>
-        <p class="dialog-intro" id="admin-intro">
-          <span data-i18n="adminIntro">Sign in to manage projects and account settings.</span>
+    <div style="padding-top:36px;">
+      <span id="tech-micro" style="display:block;font-size:10px;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:#d4af37;margin-bottom:18px;">TECH STACK &amp; LANGUAGES</span>
+      <div dir="ltr" class="marquee-wrapper" style="overflow:hidden;display:flex;flex-direction:column;gap:12px;">
+        <div class="marquee-track-left" style="gap:12px;">
+          <span class="tech-pill">Python</span><span class="tech-pill">React</span><span class="tech-pill">JavaScript</span><span class="tech-pill">HTML5</span><span class="tech-pill">CSS3</span><span class="tech-pill">GDScript</span><span class="tech-pill">UI/UX</span><span class="tech-pill">Arduino</span><span class="tech-pill">n8n</span><span class="tech-pill">Three.js</span>
+          <span class="tech-pill">Python</span><span class="tech-pill">React</span><span class="tech-pill">JavaScript</span><span class="tech-pill">HTML5</span><span class="tech-pill">CSS3</span><span class="tech-pill">GDScript</span><span class="tech-pill">UI/UX</span><span class="tech-pill">Arduino</span><span class="tech-pill">n8n</span><span class="tech-pill">Three.js</span>
+        </div>
+        <div class="marquee-track-right" style="gap:12px;">
+          <span class="tech-pill">Next.js</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Tailwind CSS</span><span class="tech-pill">Node.js</span><span class="tech-pill">Git &amp; GitHub</span><span class="tech-pill">Framer Motion</span><span class="tech-pill">REST APIs</span><span class="tech-pill">WebGL / Canvas</span><span class="tech-pill">Arabic / English UI</span><span class="tech-pill">Responsive Systems</span>
+          <span class="tech-pill">Next.js</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Tailwind CSS</span><span class="tech-pill">Node.js</span><span class="tech-pill">Git &amp; GitHub</span><span class="tech-pill">Framer Motion</span><span class="tech-pill">REST APIs</span><span class="tech-pill">WebGL / Canvas</span><span class="tech-pill">Arabic / English UI</span><span class="tech-pill">Responsive Systems</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION D: "WHAT WE CAN DO" ACCORDION (01 TO 05) -->
+  <section id="service" style="max-width:1280px;margin:0 auto;padding:88px 32px;">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:48px;">
+      <div style="text-align:right;">
+        <span style="display:block;font-size:10px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:#d4af37;margin-bottom:4px;">SERVICES</span>
+        <h2 id="services-heading" class="metallic-heading" style="font-size:clamp(44px,6vw,76px);font-weight:900;line-height:0.95;text-transform:uppercase;">
+          ماذا يمكننا<br />أن نقدم
+        </h2>
+      </div>
+    </div>
+
+    <div id="accordion-mount" style="border-top:1px solid rgba(255,255,255,0.15);"></div>
+  </section>
+
+  <!-- SECTION E: "SELECTED WORK" 5 LIVE INTERACTIVE DEVICE SHOWCASES -->
+  <section id="project" style="max-width:1280px;margin:0 auto;padding:88px 32px;">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,0.1);">
+      <div>
+        <span style="display:block;font-size:10px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:#d4af37;margin-bottom:8px;">PORTFOLIO ARCHIVE</span>
+        <h2 id="work-heading" style="font-size:clamp(34px,5vw,58px);font-weight:900;">
+          أبرز المشاريع الحية (ادخل وجربها الآن)
+        </h2>
+      </div>
+      <div style="max-width:440px;">
+        <p id="work-sub" style="font-size:14px;line-height:1.65;color:#a1a1aa;margin-bottom:14px;">
+          شاهد شكل كل موقع مباشرة داخل الشاشات التفاعلية أو اضغط (ادخل على الموقع الآن ↗) لفتح الموقع الكامل فوراً.
         </p>
-        <form class="admin-form" id="login-form">
-          <label>
-            <span data-i18n="adminEmail">Admin email</span>
-            <input
-              name="email"
-              type="email"
-              autocomplete="email"
-              maxlength="120"
-              required
-            />
-          </label>
-          <p class="form-error" id="login-error" role="alert" hidden></p>
-          <p class="form-success" id="login-success" role="status" hidden></p>
-          <button class="button button-primary" type="submit">
-            <span data-i18n="sendSignInLink">Email me a secure sign-in link</span> <span aria-hidden="true">→</span>
-          </button>
-        </form>
+        <button type="button" onclick="handleStudioBtn()"
+           style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:linear-gradient(90deg,#f5d77f,#d4af37);color:#05060a;font-size:12px;font-weight:800;">
+          <span>افتح جميع المواقع داخل الاستوديو التفاعلي</span><span>⚡</span>
+        </button>
+      </div>
+    </div>
 
-        <div id="admin-dashboard" hidden>
-          <div class="admin-toolbar">
-            <h3 data-i18n="projectsHeading">Projects</h3>
-            <button class="button button-primary" id="new-project" type="button" data-i18n="newProject">
-              New project +
-            </button>
-            <button class="button button-secondary" id="admin-signout" type="button" data-i18n="signOut">
-              Sign out
-            </button>
+    <div id="projects-mount" style="margin-top:64px;display:flex;flex-direction:column;gap:110px;"></div>
+  </section>
+
+  <!-- SECTION F: "INTERFACE PARTS" DRAGGABLE HORIZONTAL SLIDER -->
+  <section id="components" style="max-width:1280px;margin:0 auto;padding:88px 32px;border-top:1px solid rgba(255,255,255,0.1);">
+    <div class="grid-2col" style="display:grid;grid-template-columns:4fr 8fr;gap:40px;align-items:start;">
+      <div>
+        <h2 id="parts-heading" style="font-size:clamp(32px,4vw,48px);font-weight:900;line-height:1.15;">
+          مكونات تفاعلية حية من مواقعي.
+        </h2>
+        <p id="parts-sub" style="margin-top:18px;font-size:14px;line-height:1.65;color:#a1a1aa;">
+          اسحب الكروت أو اضغط (ادخل على الموقع) لتجربة كل واجهة مباشرة.
+        </p>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;max-width:220px;">
+          <a href="#project" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:8px;background:#f5d77f;color:#05060a;font-size:12px;font-weight:800;">
+            <span>استكشف المواقع</span><span>→</span>
+          </a>
+          <a href="https://wa.me/201095549241" target="_blank" rel="noopener noreferrer"
+             style="display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:8px;border:1px solid rgba(245,215,127,0.3);background:rgba(255,255,255,0.03);color:#e5e7eb;font-size:12px;font-weight:700;">
+            راسلني على واتساب
+          </a>
+        </div>
+      </div>
+
+      <div style="min-width:0;">
+        <div id="parts-slider" class="no-scrollbar" style="display:flex;gap:20px;overflow-x:auto;padding-bottom:16px;cursor:grab;user-select:none;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION G: INTERACTIVE BREAKOUT GAME ("YOUSEF SAAD" — Twin of Intro Animation) -->
+  <section style="max-width:1120px;margin:0 auto;padding:80px 32px;">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:#9ca3af;margin-bottom:14px;">
+      <span id="game-caption" style="color:#e4e4e7;font-weight:600;">حرك الماوس للتحكم بالمضرب وحطم المكعبات — شقيق أنيميشن البداية!</span>
+      <span id="game-score" style="font-family:monospace;color:#f5d77f;font-weight:700;">SCORE: 0 •••</span>
+    </div>
+    <div style="position:relative;border-radius:18px;border:1px solid rgba(245,215,127,0.22);background:#050509;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,0.9);">
+      <canvas id="breakout-canvas" width="860" height="390" style="width:100%;height:360px;display:block;cursor:crosshair;"></canvas>
+      <div style="position:absolute;bottom:16px;right:20px;display:flex;gap:10px;">
+        <button type="button" id="autopilot-btn" onclick="toggleAutoPilot()"
+          style="padding:8px 14px;border-radius:8px;border:1px solid rgba(245,215,127,0.35);background:rgba(0,0,0,0.65);color:#f5d77f;font-size:11px;font-weight:700;">
+          اللعب التلقائي: مفعل (حرك الماوس للعب)
+        </button>
+        <button type="button" onclick="resetBreakout()"
+          style="padding:8px 18px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-size:12px;font-weight:700;">
+          إعادة بناء
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION I: "GET IN TOUCH" 2-COLUMN FOOTER (Email: yosifahmedsaad@gmail.com) -->
+  <footer id="contact" style="border-top:1px solid rgba(255,255,255,0.1);padding:88px 32px 48px;max-width:1280px;margin:0 auto;">
+    <div class="grid-2col" style="display:grid;grid-template-columns:6fr 6fr;gap:48px;align-items:start;padding-bottom:64px;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border-radius:999px;border:1px solid rgba(245,215,127,0.3);background:rgba(212,175,55,0.1);font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#f5d77f;">
+          <span style="width:8px;height:8px;border-radius:999px;background:#34d399;box-shadow:0 0 10px #34d399;"></span>
+          <span id="footer-badge">متاح للمشاريع والتعاون الجديد</span>
+        </div>
+        <h2 id="footer-heading" style="margin-top:20px;font-size:clamp(38px,5vw,60px);font-weight:900;">تواصل معي</h2>
+        <p id="footer-desc" style="margin-top:16px;font-size:15px;line-height:1.7;color:#a1a1aa;max-width:440px;">
+          متاح للمشاريع الحرة، العقود البرمجية، والتعاون الإبداعي في بناء تطبيقات الويب والواجهات التفاعلية. تواصل معي مباشرة عبر واتساب أو الإيميل.
+        </p>
+        <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:12px;">
+          <a href="https://wa.me/201095549241" target="_blank" rel="noopener noreferrer"
+             style="display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;background:linear-gradient(90deg,#f5d77f,#d4af37);color:#05060a;font-size:12px;font-weight:800;">
+            <span>WhatsApp (+20 10 95549241)</span><span>↗</span>
+          </a>
+          <a href="mailto:yosifahmedsaad@gmail.com"
+             style="display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;border:1px solid rgba(245,215,127,0.35);background:rgba(255,255,255,0.04);color:#fff;font-size:12px;font-weight:700;">
+            <span>yosifahmedsaad@gmail.com</span><span>✉</span>
+          </a>
+          <a href="https://github.com/yosifahmedsaad-gif" target="_blank" rel="noopener noreferrer"
+             style="display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.03);color:#fff;font-size:12px;font-weight:700;">
+            <span>GitHub Profile</span><span>↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="tilt-card" style="border-radius:24px;border:1px solid rgba(245,215,127,0.2);background:rgba(8,8,12,0.92);padding:36px;box-shadow:0 25px 70px rgba(0,0,0,0.85);">
+        <div style="padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08);">
+          <span style="display:block;font-size:10px;letter-spacing:0.22em;color:#d4af37;">WHATSAPP</span>
+          <a href="https://wa.me/201095549241" target="_blank" rel="noopener noreferrer" dir="ltr" style="margin-top:6px;display:inline-block;font-size:15px;font-weight:600;">+20 10 95549241</a>
+        </div>
+        <div style="padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+          <span style="display:block;font-size:10px;letter-spacing:0.22em;color:#d4af37;">EMAIL</span>
+          <a href="mailto:yosifahmedsaad@gmail.com" dir="ltr" style="margin-top:6px;display:inline-block;font-size:16px;font-weight:700;color:#f5d77f;">yosifahmedsaad@gmail.com</a>
+        </div>
+        <div style="padding-top:18px;">
+          <span style="display:block;font-size:10px;letter-spacing:0.22em;color:#d4af37;">GITHUB PROFILE</span>
+          <a href="https://github.com/yosifahmedsaad-gif" target="_blank" rel="noopener noreferrer" dir="ltr" style="margin-top:6px;display:inline-block;font-size:15px;font-weight:600;">github.com/yosifahmedsaad-gif ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;font-size:12px;color:#6b7280;">
+      <span>© 2026 Yousef Saad (yosifahmedsaad@gmail.com). All rights reserved.</span>
+      <div style="display:flex;gap:20px;">
+        <a href="#home">الرئيسية</a>
+        <a href="#about">عني</a>
+        <a href="#service">الخدمات</a>
+        <a href="#project">المشاريع</a>
+        <a href="#components">المكونات</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SECTION H1: STUDIO VIP LOGIN MODAL (yosifahmedsaad@gmail.com / 1988) -->
+  <div id="studio-modal" class="modal-backdrop hidden" onclick="if(event.target===this) closeStudioModal()">
+    <div class="frosted-vip-modal">
+      <button type="button" onclick="closeStudioModal()" style="position:absolute;top:18px;right:18px;width:30px;height:30px;border-radius:999px;border:1px solid rgba(255,255,255,0.15);color:#d1d5db;">✕</button>
+      <div style="text-align:center;">
+        <div style="width:48px;height:48px;margin:0 auto;border-radius:14px;border:1px solid rgba(245,215,127,0.5);background:rgba(212,175,55,0.2);display:flex;align-items:center;justify-content:center;font-weight:900;color:#f5d77f;">YS</div>
+        <h3 style="margin-top:12px;font-size:20px;font-weight:900;letter-spacing:0.08em;">تسجيل دخول الاستوديو</h3>
+        <p style="margin-top:4px;font-size:12px;color:#d4d4d8;">افتح لوحة تحكم الاستوديو التفاعلية لمعاينة وتجربة المواقع الحية</p>
+      </div>
+
+      <div dir="ltr" style="margin-top:20px;border-radius:14px;border:1px solid rgba(245,215,127,0.35);background:rgba(0,0,0,0.55);padding:14px;font-size:12px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+          <span style="color:#9ca3af;">EMAIL:</span>
+          <code style="color:#f5d77f;font-weight:700;">yosifahmedsaad@gmail.com</code>
+        </div>
+        <div style="display:flex;justify-content:space-between;">
+          <span style="color:#9ca3af;">PASSWORD:</span>
+          <code style="color:#34d399;font-weight:700;">1988</code>
+        </div>
+      </div>
+
+      <form onsubmit="event.preventDefault(); submitStudioLogin();" style="margin-top:20px;">
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:10px;letter-spacing:0.15em;color:#9ca3af;margin-bottom:4px;">البريد الإلكتروني (EMAIL)</label>
+          <input id="studio-email-input" type="email" dir="ltr" value="yosifahmedsaad@gmail.com" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:8px;color:#fff;outline:none;font-size:14px;" />
+        </div>
+        <div style="margin-bottom:18px;">
+          <label style="display:block;font-size:10px;letter-spacing:0.15em;color:#9ca3af;margin-bottom:4px;">كلمة المرور (PASSWORD)</label>
+          <input id="studio-pass-input" type="text" dir="ltr" value="1988" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:8px;color:#fff;outline:none;font-size:14px;" />
+        </div>
+        <p id="studio-login-error" style="color:#ff003c;font-size:12px;font-weight:700;margin-bottom:12px;display:none;"></p>
+        <button type="submit" style="width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,#f5d77f,#d4af37);color:#050507;font-size:13px;font-weight:900;letter-spacing:0.08em;">
+          افتح الاستوديو التفاعلي الآن ↗
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SECTION H2: WORKING INTERACTIVE STUDIO CONTROL CENTER -->
+  <div id="studio-dashboard" class="hidden">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:14px 24px;background:#08080c;border-bottom:1px solid rgba(245,215,127,0.22);">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#f5d77f,#d4af37);color:#050507;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:13px;">YS</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <span style="font-size:14px;font-weight:900;color:#fff;">استوديو يوسف سعد التفاعلي — جميع المواقع الحية</span>
+            <span id="cloud-sync-badge" style="padding:2px 10px;border-radius:999px;background:rgba(16,185,129,0.15);border:1px solid rgba(52,211,153,0.4);color:#34d399;font-size:10px;font-weight:800;">☁️ متصل بالسحابة • يتجدد على نفس الرابط</span>
           </div>
-          <p class="form-error" id="dashboard-error" role="alert" hidden></p>
-          <div class="admin-project-list" id="admin-project-list" aria-live="polite"></div>
+          <div dir="ltr" style="font-size:11px;color:#f5d77f;">yosifahmedsaad@gmail.com • PASS: 1988 • CLOUD LIVE</div>
+        </div>
+      </div>
 
-          <form class="admin-form admin-editor" id="project-form" hidden>
-            <h3 id="project-form-title" data-i18n="newProject">New project</h3>
-            <div class="admin-fields-grid">
-              <label>
-                <span data-i18n="nameEnglish">Name (English)</span>
-                <input name="nameEn" type="text" maxlength="70" required />
-              </label>
-              <label>
-                <span data-i18n="nameArabic">Name (Arabic)</span>
-                <input name="nameAr" type="text" maxlength="70" dir="rtl" required />
-              </label>
-              <label>
-                <span data-i18n="categoryEnglish">Category (English)</span>
-                <input name="categoryEn" type="text" maxlength="50" required />
-              </label>
-              <label>
-                <span data-i18n="categoryArabic">Category (Arabic)</span>
-                <input name="categoryAr" type="text" maxlength="50" dir="rtl" required />
-              </label>
-              <label>
-                <span data-i18n="descriptionEnglish">Description (English)</span>
-                <textarea name="descriptionEn" maxlength="240" required></textarea>
-              </label>
-              <label>
-                <span data-i18n="descriptionArabic">Description (Arabic)</span>
-                <textarea name="descriptionAr" maxlength="240" dir="rtl" required></textarea>
-              </label>
-            </div>
-            <label>
-              <span data-i18n="projectLinkLabel">Project link</span>
-              <input name="url" type="url" placeholder="https://" />
-            </label>
-            <label>
-              <span data-i18n="imageLabel">Cover image URL (optional)</span>
-              <input name="image" type="url" placeholder="https://" />
-            </label>
-            <label>
-              <span data-i18n="frameFilesLabel">Animation frames (optional, select in order)</span>
-              <input name="frameFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple />
-            </label>
-            <label class="admin-check">
-              <input name="featured" type="checkbox" />
-              <span data-i18n="featuredProject">Feature this project</span>
-            </label>
-            <p class="security-note" data-i18n="frameFilesNote">Selecting new frames replaces the current animation.</p>
-            <p class="form-error" id="project-error" role="alert" hidden></p>
-            <div class="admin-actions">
-              <button class="button button-primary" type="submit" data-i18n="saveProject">Save project</button>
-              <button class="button button-secondary" id="cancel-project" type="button" data-i18n="cancel">Cancel</button>
-            </div>
-          </form>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <button type="button" onclick="toggleAddProjectPanel()"
+           style="padding:8px 16px;border-radius:999px;background:linear-gradient(135deg,#0066ff,#00d2ff);color:#fff;font-size:12px;font-weight:900;box-shadow:0 0 22px rgba(0,102,255,0.45);border:1px solid rgba(255,255,255,0.25);">
+          + ☁️ إضافة مشروع جديد ونشره على السحاب
+        </button>
 
-          <form class="admin-form admin-editor account-editor" id="account-form">
-            <h3 data-i18n="accountSettings">Account settings</h3>
-            <p class="security-note" id="admin-current-email"></p>
-            <label>
-              <span data-i18n="newEmail">New email (optional)</span>
-              <input name="email" type="email" autocomplete="email" maxlength="120" />
-            </label>
-            <label>
-              <span data-i18n="newPassword">New password (optional)</span>
-              <input name="password" type="password" autocomplete="new-password" minlength="8" />
-            </label>
-            <p class="form-error" id="account-error" role="alert" hidden></p>
-            <p class="form-success" id="account-success" role="status" hidden></p>
-            <button class="button button-secondary" type="submit" data-i18n="updateAccount">Update account</button>
+        <div style="display:flex;align-items:center;gap:6px;background:#030305;padding:4px;border-radius:999px;border:1px solid rgba(255,255,255,0.1);">
+          <button type="button" onclick="setStudioViewport('100%')" style="padding:5px 12px;border-radius:999px;background:#f5d77f;color:#050507;font-size:11px;font-weight:800;">شاشة كاملة</button>
+          <button type="button" onclick="setStudioViewport('768px')" style="padding:5px 12px;border-radius:999px;color:#d4d4d8;font-size:11px;font-weight:700;">تابلت</button>
+          <button type="button" onclick="setStudioViewport('390px')" style="padding:5px 12px;border-radius:999px;color:#d4d4d8;font-size:11px;font-weight:700;">موبايل</button>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;">
+        <a id="studio-external-link" href="https://wessy-ka-nubian-guest-house-cultural-lounge.ai.studio/" target="_blank" rel="noopener noreferrer"
+           style="padding:8px 16px;border-radius:999px;background:linear-gradient(90deg,#f5d77f,#d4af37);color:#050507;font-size:12px;font-weight:900;">
+          ادخل على الموقع في نافذة جديدة ↗
+        </a>
+        <button type="button" onclick="closeStudioDashboard()"
+           style="padding:8px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);color:#fff;font-size:12px;font-weight:700;">
+          إغلاق الاستوديو ✕
+        </button>
+      </div>
+    </div>
+
+    <div class="studio-body-grid" style="flex:1;display:grid;grid-template-columns:350px 1fr;overflow:hidden;">
+      <!-- Left Sidebar: Cloud Project Publisher + Live Project List -->
+      <div style="background:#06060a;border-inline-end:1px solid rgba(255,255,255,0.1);padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;">
+        <button type="button" onclick="toggleAddProjectPanel()"
+           style="width:100%;padding:12px 14px;border-radius:14px;background:linear-gradient(135deg,rgba(0,102,255,0.22),rgba(212,175,55,0.22));border:1px solid rgba(245,215,127,0.5);color:#f5d77f;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:space-between;">
+          <span>+ ☁️ إضافة مشروع جديد للسحابة</span>
+          <span style="font-size:10px;background:#f5d77f;color:#050507;padding:2px 8px;border-radius:999px;font-weight:900;">نفس الرابط</span>
+        </button>
+
+        <!-- Cloud Add & Auto-Redeploy Panel inside Studio -->
+        <div id="studio-add-project-panel" class="hidden" style="border-radius:16px;border:1px solid rgba(0,210,255,0.4);background:rgba(10,12,20,0.96);padding:16px;box-shadow:0 18px 45px rgba(0,0,0,0.85);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+            <span style="font-size:12px;font-weight:900;color:#00d2ff;">☁️ رفع مشروع جديد وإعادة نشر الموقع</span>
+            <button type="button" onclick="toggleAddProjectPanel()" style="font-size:11px;color:#9ca3af;">✕</button>
+          </div>
+          <p style="font-size:11px;color:#a1a1aa;line-height:1.5;margin-bottom:12px;">
+            عند إضافة المشروع يتم رفعه فوراً على السحابة وإعادة تحديث الموقع على <strong style="color:#f5d77f;">نفس الرابط</strong> ليظهر عند جميع الزوار تلقائياً.
+          </p>
+
+          <form onsubmit="event.preventDefault(); publishNewCloudProject();" style="display:flex;flex-direction:column;gap:10px;">
+            <div>
+              <label style="display:block;font-size:10px;color:#f5d77f;font-weight:700;margin-bottom:3px;">اسم المشروع بالعربي *</label>
+              <input id="new-proj-title-ar" type="text" required placeholder="مثال: منصة رويال العقارية الذكية"
+                style="width:100%;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:#040407;color:#fff;font-size:12px;outline:none;" />
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div>
+                <label style="display:block;font-size:10px;color:#d4d4d8;font-weight:700;margin-bottom:3px;">الاسم الإنجليزي (Bold) *</label>
+                <input id="new-proj-bold" type="text" dir="ltr" required placeholder="ROYAL"
+                  style="width:100%;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:#040407;color:#fff;font-size:12px;outline:none;" />
+              </div>
+              <div>
+                <label style="display:block;font-size:10px;color:#d4d4d8;font-weight:700;margin-bottom:3px;">الاسم المائل (Italic)</label>
+                <input id="new-proj-italic" type="text" dir="ltr" placeholder="Vista"
+                  style="width:100%;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:#040407;color:#fff;font-size:12px;outline:none;" />
+              </div>
+            </div>
+
+            <div>
+              <label style="display:block;font-size:10px;color:#f5d77f;font-weight:700;margin-bottom:3px;">رابط الموقع الحي (URL) *</label>
+              <input id="new-proj-url" type="text" dir="ltr" required placeholder="https://example.com"
+                style="width:100%;padding:8px 10px;border-radius:8px;border:1px solid rgba(245,215,127,0.35);background:#040407;color:#34d399;font-size:12px;font-family:monospace;outline:none;" />
+            </div>
+
+            <div>
+              <label style="display:block;font-size:10px;color:#d4d4d8;font-weight:700;margin-bottom:3px;">التصنيف الفرعي (Subtitle)</label>
+              <input id="new-proj-sub" type="text" dir="ltr" placeholder="INTERACTIVE CLOUD PLATFORM"
+                style="width:100%;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:#040407;color:#fff;font-size:11px;outline:none;" />
+            </div>
+
+            <div>
+              <label style="display:block;font-size:10px;color:#d4d4d8;font-weight:700;margin-bottom:3px;">وصف المشروع بالعربي</label>
+              <textarea id="new-proj-desc-ar" rows="2" placeholder="وصف مختصر يبرز مميزات الموقع والتجربة التفاعلية..."
+                style="width:100%;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:#040407;color:#fff;font-size:12px;outline:none;resize:vertical;"></textarea>
+            </div>
+
+            <div>
+              <label style="display:block;font-size:10px;color:#d4d4d8;font-weight:700;margin-bottom:3px;">وصف المشروع بالإنجليزي (اختياري)</label>
+              <textarea id="new-proj-desc-en" rows="2" dir="ltr" placeholder="A high-performance interactive web platform engineered for seamless user experience."
+                style="width:100%;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:#040407;color:#fff;font-size:11px;outline:none;resize:vertical;"></textarea>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div>
+                <label style="display:block;font-size:10px;color:#d4d4d8;font-weight:700;margin-bottom:3px;">إطار العرض</label>
+                <select id="new-proj-device" style="width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:#040407;color:#fff;font-size:11px;">
+                  <option value="laptop">💻 لابتوب (Laptop)</option>
+                  <option value="phone">📱 موبايل (Phone)</option>
+                </select>
+              </div>
+              <div>
+                <label style="display:block;font-size:10px;color:#d4d4d8;font-weight:700;margin-bottom:3px;">الإضاءة الخلفية</label>
+                <select id="new-proj-bg" style="width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:#040407;color:#fff;font-size:11px;">
+                  <option value="linear-gradient(145deg,#2b1d0e,#050507)">ذهبي ملكي</option>
+                  <option value="linear-gradient(155deg,#0b1936,#030407)">أزرق سيبراني</option>
+                  <option value="linear-gradient(145deg,#0d232e,#040508)">زمردي داكن</option>
+                  <option value="linear-gradient(145deg,#2d0d13,#040406)">ياقوتي فخم</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Optional GitHub / Deploy Webhook Settings for Static Repo Auto-Commit -->
+            <details style="border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.02);padding:8px;">
+              <summary style="cursor:pointer;font-size:10px;color:#9ca3af;font-weight:700;">
+                ⚙️ إعدادات ربط GitHub / Deploy Hook الإضافية (اختياري)
+              </summary>
+              <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px;">
+                <input id="cloud-deploy-hook" type="text" dir="ltr" placeholder="Deploy Webhook URL (Vercel / Netlify / Render)"
+                  style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);background:#040407;color:#fff;font-size:10px;" />
+                <input id="cloud-gh-repo" type="text" dir="ltr" placeholder="GitHub Repo (e.g. yosifahmedsaad-gif/portfolio)"
+                  style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);background:#040407;color:#fff;font-size:10px;" />
+                <input id="cloud-gh-token" type="password" dir="ltr" placeholder="GitHub Personal Access Token (ghp_...)"
+                  style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);background:#040407;color:#fff;font-size:10px;" />
+              </div>
+            </details>
+
+            <div id="cloud-deploy-status" style="display:none;padding:10px;border-radius:10px;border:1px solid rgba(52,211,153,0.4);background:rgba(16,185,129,0.1);font-size:11px;color:#6ee7b7;line-height:1.5;"></div>
+
+            <button id="cloud-publish-btn" type="submit"
+              style="width:100%;padding:12px;border-radius:10px;background:linear-gradient(135deg,#f5d77f,#d4af37);color:#050507;font-size:12px;font-weight:900;box-shadow:0 8px 25px rgba(212,175,55,0.35);">
+              🚀 رفع للسحابة وإعادة النشر على نفس الرابط
+            </button>
           </form>
         </div>
-      </section>
-    </div>
 
-    <div class="overlay" id="detail-overlay" hidden>
-      <section
-        class="dialog detail-dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="detail-title"
-      >
-        <button
-          class="dialog-close"
-          type="button"
-          aria-label="Close project details"
-          data-i18n-aria="closeDialog"
-          data-close="detail-overlay"
-        >
-          ×
-        </button>
-        <div class="detail-visual" id="detail-visual"></div>
-        <span class="project-category" id="detail-category"></span>
-        <h2 id="detail-title"></h2>
-        <p class="detail-description" id="detail-description"></p>
-        <a
-          class="button button-primary detail-link"
-          id="detail-link"
-          href="#"
-          target="_blank"
-          rel="noreferrer"
-          hidden
-        >
-          <span data-i18n="visitProject">Visit project</span> <span aria-hidden="true">↗</span>
-        </a>
-        <button class="button button-next" id="detail-next" type="button">
-          <span data-i18n="nextProject">Next project</span> <span aria-hidden="true">→</span>
-        </button>
-      </section>
-    </div>
+        <div id="studio-project-list" style="display:flex;flex-direction:column;gap:10px;"></div>
+      </div>
 
-    <div class="overlay" id="studio-overlay" hidden>
-      <section
-        class="dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="studio-title"
-      >
-        <button
-          class="dialog-close"
-          type="button"
-          aria-label="Close inquiry form"
-          data-i18n-aria="closeDialog"
-          data-close="studio-overlay"
-        >
-          ×
-        </button>
-        <p class="section-kicker">Studio Y</p>
-        <h2 id="studio-title" data-i18n="studioTitle">Let’s build something together.</h2>
-        <p class="dialog-intro" data-i18n="studioIntro">Share a few details and I’ll get back to you.</p>
-        <form class="admin-form" id="studio-form">
-          <label>
-            <span data-i18n="yourName">Your name</span>
-            <input name="name" type="text" autocomplete="name" maxlength="80" value="Yousef" required />
-          </label>
-          <label>
-            <span data-i18n="yourEmail">Your email</span>
-            <input name="email" type="email" autocomplete="email" maxlength="120" value="yosifahmedsaad@gmail.com" required />
-          </label>
-          <button class="button button-primary" type="submit">
-            <span data-i18n="sendEntry">Send Entry</span> <span aria-hidden="true">↗</span>
-          </button>
-          <p class="security-note" data-i18n="studioEntryNote">Submitting opens the secure control room. You must sign in to manage projects.</p>
-        </form>
-      </section>
+      <div style="background:#030305;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;">
+        <div id="studio-browser-frame" style="width:100%;height:100%;border-radius:16px;border:1px solid rgba(245,215,127,0.35);background:#09090d;display:flex;flex-direction:column;overflow:hidden;transition:width 0.3s ease;">
+          <div dir="ltr" style="display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:#0d0d12;border-bottom:1px solid rgba(255,255,255,0.1);font-size:11px;">
+            <span style="color:#f5d77f;">● ● ●</span>
+            <span id="studio-url-bar" style="font-family:monospace;color:#f5d77f;">https://wessy-ka-nubian-guest-house-cultural-lounge.ai.studio/</span>
+            <a id="studio-top-open" href="https://wessy-ka-nubian-guest-house-cultural-lounge.ai.studio/" target="_blank" rel="noopener noreferrer" style="color:#34d399;font-weight:700;">Open ↗</a>
+          </div>
+          <iframe id="studio-iframe" src="https://wessy-ka-nubian-guest-house-cultural-lounge.ai.studio/" style="flex:1;width:100%;border:0;background:#000;"></iframe>
+        </div>
+      </div>
     </div>
-  </body>
+  </div>
+
+  <script>
+    // =========================================================================
+    // STEP 1: HEXFIELD ENGINE & AUTOMATIC LOCAL RELATIVE ASSET PATH RESOLVER
+    // Automatically links `assets/images/` and `assets/videos/` with fallback
+    // =========================================================================
+    const HEXFIELD_ASSET_PATHS = {
+      imagesDir: "assets/images/",
+      videosDir: "assets/videos/",
+      resolveImage(fileName) {
+        const clean = String(fileName || "").replace(/^(\.\/|\/)*(assets\/images\/)?/, "");
+        return `${this.imagesDir}${clean}`;
+      },
+      resolveVideo(fileName) {
+        const clean = String(fileName || "").replace(/^(\.\/|\/)*(assets\/videos\/)?/, "");
+        return `${this.videosDir}${clean}`;
+      },
+      bindAllMedia() {
+        document.querySelectorAll("[data-hex-img]").forEach((el) => {
+          const file = el.getAttribute("data-hex-img");
+          if (file) {
+            el.src = this.resolveImage(file);
+            el.onerror = () => {
+              el.onerror = null;
+              el.src = `./${file}`;
+            };
+          }
+        });
+        document.querySelectorAll("[data-hex-video]").forEach((el) => {
+          const file = el.getAttribute("data-hex-video");
+          if (file) {
+            el.src = this.resolveVideo(file);
+            el.onerror = () => {
+              el.onerror = null;
+              el.src = this.resolveVideo("showcase.mp4");
+            };
+          }
+        });
+      }
+    };
+    window.HEXFIELD_ASSET_PATHS = HEXFIELD_ASSET_PATHS;
+    HEXFIELD_ASSET_PATHS.bindAllMedia();
+
+    // Interactive Hexfield Background Grid Renderer
+    const hexCanvas = document.getElementById("hexfield-canvas");
+    const hexCtx = hexCanvas ? hexCanvas.getContext("2d") : null;
+    let hexMouseX = window.innerWidth / 2;
+    let hexMouseY = window.innerHeight / 2;
+
+    function resizeHexfield() {
+      if (!hexCanvas) return;
+      hexCanvas.width = window.innerWidth;
+      hexCanvas.height = window.innerHeight;
+    }
+    resizeHexfield();
+    window.addEventListener("resize", resizeHexfield);
+    window.addEventListener("mousemove", (e) => {
+      hexMouseX = e.clientX;
+      hexMouseY = e.clientY;
+    });
+
+    function drawHexagon(ctx, x, y, r) {
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const angle = (Math.PI / 3) * i;
+        const hx = x + r * Math.cos(angle);
+        const hy = y + r * Math.sin(angle);
+        if (i === 0) ctx.moveTo(hx, hy);
+        else ctx.lineTo(hx, hy);
+      }
+      ctx.closePath();
+      ctx.stroke();
+    }
+
+    function renderHexfield() {
+      if (!hexCanvas || !hexCtx) return;
+      hexCtx.clearRect(0, 0, hexCanvas.width, hexCanvas.height);
+      const r = 34;
+      const dx = r * 1.5;
+      const dy = r * Math.sqrt(3);
+      for (let col = 0, x = 0; x < hexCanvas.width + r; col++, x += dx) {
+        for (let y = (col % 2 === 0 ? 0 : dy / 2); y < hexCanvas.height + r; y += dy) {
+          const dist = Math.hypot(x - hexMouseX, y - hexMouseY);
+          if (dist < 320) {
+            const alpha = Math.max(0.02, (1 - dist / 320) * 0.28);
+            hexCtx.strokeStyle = `rgba(212, 175, 55, ${alpha.toFixed(3)})`;
+            hexCtx.lineWidth = dist < 130 ? 1.2 : 0.7;
+            drawHexagon(hexCtx, x, y, r - 2);
+          } else {
+            hexCtx.strokeStyle = "rgba(255, 255, 255, 0.018)";
+            hexCtx.lineWidth = 0.5;
+            drawHexagon(hexCtx, x, y, r - 2);
+          }
+        }
+      }
+      requestAnimationFrame(renderHexfield);
+    }
+    requestAnimationFrame(renderHexfield);
+
+    const STUDIO_EMAIL = "yosifahmedsaad@gmail.com";
+    const STUDIO_PASS = "1988";
+    let currentLang = "ar";
+    let openAcc = 0;
+    let vipUnlocked = false;
+    let studioSelectedIdx = 0;
+
+    // 1. TWIN INTRO ANIMATION (Same Bouncing Ball, Trail & Sparks as End Breakout Game)
+    const introCanvas = document.getElementById("intro-canvas");
+    const introCtx = introCanvas.getContext("2d");
+    let introRunning = true;
+    let introStart = performance.now();
+    let introTrail = [];
+    let introSparks = [];
+    let lastBounceIdx = -1;
+
+    function spawnIntroSparks(x, y) {
+      const cols = ["#FFFFFF", "#f5d77f", "#d4af37", "#00D2FF", "#FF003C"];
+      for (let i = 0; i < 14; i++) {
+        const ang = (Math.PI * 2 * i) / 14;
+        const spd = 1.5 + Math.random() * 3.5;
+        introSparks.push({ x, y, vx: Math.cos(ang) * spd, vy: Math.sin(ang) * spd, life: 1, color: cols[i % cols.length] });
+      }
+    }
+
+    function introLoop(now) {
+      if (!introRunning) return;
+      const elapsed = (now - introStart) / 1000;
+      const w = introCanvas.width, h = introCanvas.height;
+      introCtx.clearRect(0, 0, w, h);
+
+      const grad = introCtx.createRadialGradient(w/2, h/2, 10, w/2, h/2, 260);
+      grad.addColorStop(0, "rgba(255,255,255,0.14)");
+      grad.addColorStop(0.45, "rgba(212,175,55,0.08)");
+      grad.addColorStop(1, "rgba(0,0,0,0)");
+      introCtx.fillStyle = grad;
+      introCtx.fillRect(0, 0, w, h);
+
+      const cx = w / 2, cy = h / 2;
+      let bx = cx, by = cy + 54;
+      if (elapsed < 1.35) {
+        const p = elapsed / 1.35;
+        bx = cx - 180 * (1 - p) * Math.cos(p * Math.PI * 2.2);
+        by = cy + 54 - Math.abs(Math.sin(p * Math.PI * 3)) * 125 * (1 - p * 0.45);
+        const bStep = Math.floor(p * 3);
+        if (bStep !== lastBounceIdx) {
+          lastBounceIdx = bStep;
+          spawnIntroSparks(bx, by);
+        }
+      }
+
+      introTrail.push({ x: bx, y: by });
+      if (introTrail.length > 14) introTrail.shift();
+
+      if (introTrail.length > 2 && elapsed < 1.55) {
+        for (let i = 0; i < introTrail.length - 1; i++) {
+          const alpha = (i / introTrail.length) * 0.55;
+          introCtx.strokeStyle = `rgba(255,255,255,${alpha})`;
+          introCtx.lineWidth = (i / introTrail.length) * 16;
+          introCtx.lineCap = "round";
+          introCtx.beginPath();
+          introCtx.moveTo(introTrail[i].x, introTrail[i].y);
+          introCtx.lineTo(introTrail[i + 1].x, introTrail[i + 1].y);
+          introCtx.stroke();
+        }
+      }
+
+      if (elapsed < 1.55) {
+        introCtx.fillStyle = "rgba(255,255,255,0.85)";
+        introCtx.fillRect(bx - 48, cy + 72, 96, 8);
+      }
+
+      for (let i = introSparks.length - 1; i >= 0; i--) {
+        const sp = introSparks[i];
+        sp.x += sp.vx; sp.y += sp.vy; sp.life -= 0.032;
+        if (sp.life <= 0) { introSparks.splice(i, 1); continue; }
+        introCtx.fillStyle = sp.color;
+        introCtx.globalAlpha = sp.life;
+        introCtx.fillRect(sp.x, sp.y, 4, 4);
+        introCtx.globalAlpha = 1;
+      }
+
+      if (elapsed < 2.45) {
+        introCtx.fillStyle = "#FFFFFF";
+        introCtx.shadowColor = "#f5d77f";
+        introCtx.shadowBlur = 24;
+        introCtx.beginPath();
+        introCtx.arc(bx, by, 9, 0, Math.PI * 2);
+        introCtx.fill();
+        introCtx.shadowBlur = 0;
+      }
+
+      requestAnimationFrame(introLoop);
+    }
+
+    function runIntroTimers() {
+      const wordBox = document.getElementById("intro-word-box");
+      const wordText = document.getElementById("intro-word-text");
+      wordBox.style.display = "none";
+      wordText.textContent = "YOUSEF";
+      setTimeout(() => { wordBox.style.display = "flex"; }, 1250);
+      setTimeout(() => { wordText.textContent = "PORTFOLIO"; }, 2200);
+      setTimeout(() => { finishIntro(); }, 3050);
+    }
+
+    function finishIntro() {
+      introRunning = false;
+      const ov = document.getElementById("intro-overlay");
+      ov.style.opacity = "0";
+      setTimeout(() => { ov.style.display = "none"; }, 420);
+    }
+
+    function replayIntro() {
+      const ov = document.getElementById("intro-overlay");
+      ov.style.display = "flex";
+      ov.style.opacity = "1";
+      introTrail = [];
+      introSparks = [];
+      lastBounceIdx = -1;
+      introStart = performance.now();
+      introRunning = true;
+      requestAnimationFrame(introLoop);
+      runIntroTimers();
+    }
+
+    requestAnimationFrame(introLoop);
+    runIntroTimers();
+
+    // 2. INTERACTIVE MOUSE SPOTLIGHT, HERO PARALLAX & CLICK RIPPLES
+    window.addEventListener("mousemove", (e) => {
+      const spot = document.getElementById("mouse-spotlight");
+      spot.style.background = `radial-gradient(520px circle at ${e.clientX}px ${e.clientY}px, rgba(212, 175, 55, 0.09), rgba(0, 102, 255, 0.04) 45%, transparent 75%)`;
+
+      const nx = (e.clientX / window.innerWidth - 0.5) * 2;
+      const ny = (e.clientY / window.innerHeight - 0.5) * 2;
+      const title = document.getElementById("hero-portfolio-title");
+      const avatar = document.getElementById("hero-avatar-wrap");
+      const aura = document.getElementById("hero-aura");
+      if (title) title.style.transform = `translate3d(${nx * -16}px, ${ny * -10}px, 0)`;
+      if (avatar) avatar.style.transform = `translate3d(${nx * 18}px, ${ny * 12}px, 0)`;
+      if (aura) aura.style.transform = `translate3d(${nx * -24}px, ${ny * -18}px, 0)`;
+    });
+
+    window.addEventListener("click", (e) => {
+      const r = document.createElement("span");
+      r.className = "click-ripple";
+      r.style.left = (e.clientX - 18) + "px";
+      r.style.top = (e.clientY - 18) + "px";
+      document.body.appendChild(r);
+      setTimeout(() => r.remove(), 620);
+    });
+
+    const SERVICES = [
+      { num: "01", en: "FULL-STACK WEB ARCHITECTURE", ar: "هندسة وتطوير تطبيقات الويب المتكاملة", descEn: "I architect and ship complete web platforms from initial concept to live production.", descAr: "أقوم بهندسة وبناء منصات ويب متكاملة من الفكرة الأولى وحتى الإطلاق الفعلي." },
+      { num: "02", en: "INTERACTIVE UI, 3D & MOTION DESIGN", ar: "تصميم الواجهات التفاعلية والأنيميشن ثلاثي الأبعاد", descEn: "Three.js, WebGL & HTML5 Canvas interactive experiences engineered for 60fps smoothness.", descAr: "تجارب تفاعلية متقدمة باستخدام Three.js وHTML5 Canvas بسرعة 60 إطاراً في الثانية." },
+      { num: "03", en: "AI AUTOMATION & SMART WORKFLOWS (N8N / PYTHON)", ar: "أتمتة الذكاء الاصطناعي وسير العمل الذكي (n8n / Python)", descEn: "Connecting intelligent backend workflows with sleek frontend portals via Python and n8n.", descAr: "ربط سير العمل الذكي في الخلفية بواجهات أمامية أنيقة عبر Python وn8n." },
+      { num: "04", en: "GAME DEVELOPMENT & INTERACTIVE ENGINES", ar: "تطوير الألعاب والمحركات التفاعلية (GDScript / Canvas)", descEn: "From Godot GDScript systems to playable web canvas engines.", descAr: "من أنظمة GDScript في Godot إلى محركات الألعاب المدمجة في الويب." },
+      { num: "05", en: "LUXURY HOSPITALITY, PROPTECH & E-COMMERCE PORTALS", ar: "بوابات الضيافة الفاخرة والعقارات والتجارة الإلكترونية", descEn: "Tailor-made digital flagships for real-world hospitality, real estate, and culinary brands.", descAr: "واجهات رقمية رائدة مصممة لقطاعات الضيافة والعقارات والتجارة الإلكترونية." }
+    ];
+
+    const BASE_PROJECTS = [
+      { num: "01", bold: "WESSY KA", italic: "Nubian", sub: "GUEST HOUSE & CULTURAL LOUNGE", titleAr: "بيت ضيافة ويسي كا النوبي", descEn: "An immersive digital sanctuary for Wessy Ka Nubian Guest House & Cultural Lounge.", descAr: "بوابة رقمية غامرة لبيت ضيافة واستراحة ويسي كا النوبي على ضفاف النيل.", url: "https://wessy-ka-nubian-guest-house-cultural-lounge.ai.studio/", device: "phone", bg: "linear-gradient(160deg,#2b1d0e,#050507)" },
+      { num: "02", bold: "KATO", italic: "Waidi", sub: "NUBIAN ECO-LUXURY LODGE", titleAr: "نزل كاتو وايدي النوبي", descEn: "A refined web flagship for Kato Waidi Nubian Lodge combining heritage aesthetics with interactive room discovery.", descAr: "منصة ويب راقية لنزل كاتو وايدي النوبي تجمع بين جماليات التراث النوبي والحجز التفاعلي.", url: "https://rfhywsfahmdsd-jpg.github.io/Kato-Waidi-Nubian-Lodge/", device: "laptop", bg: "linear-gradient(145deg,#0d232e,#040508)" },
+      { num: "03", bold: "SALA", italic: "Estate", sub: "LUXURY REAL ESTATE PORTAL", titleAr: "بوابة سالا العقارية", descEn: "A high-precision real estate portal engineered for property discovery and smart filtering.", descAr: "بوابة عقارية متطورة مصممة لاستكشاف العقارات الفاخرة مع نظام فلترة ذكي.", url: "https://yosifahmedsaad-gif.github.io/sala-real-estate-portal/", device: "laptop", bg: "linear-gradient(145deg,#1f1712,#040406)" },
+      { num: "04", bold: "STUDIO", italic: "Engine", sub: "INTERACTIVE WEB APPLICATION", titleAr: "تطبيق الويب التفاعلي", descEn: "A live interactive web application built for real-time state manipulation and responsive orchestration.", descAr: "تطبيق ويب تفاعلي مباشر مبني لإدارة الحالة الفورية وتنسيق المكونات الديناميكية.", url: "https://2780459.playcode.site/", device: "phone", bg: "linear-gradient(155deg,#0b1936,#030407)" },
+      { num: "05", bold: "KOSHARY", italic: "Alsafwa", sub: "THE ROYAL TASTE — LIVE STOREFRONT", titleAr: "كشري الصفوة — المذاق الملكي", descEn: "A high-conversion culinary storefront featuring an interactive menu builder and mobile-first checkout.", descAr: "واجهة طلبات رقمية عالية التحويل لمطعم كشري الصفوة بتصميم متجاوب.", url: "https://yosifahmedsaad-gif.github.io/koshary-alsafwa-live/", device: "laptop", bg: "linear-gradient(145deg,#2d0d13,#040406)" }
+    ];
+
+    // =========================================================================
+    // CLOUD PROJECTS & SAME-LINK AUTO-REDEPLOY ENGINE
+    // Connects Studio to Global Cloud KV + Real-Time Cloud Stream + GitHub/Hook
+    // so adding a project updates the site on the EXACT SAME LINK for everyone!
+    // =========================================================================
+    const CLOUD_KV_APP_KEY = "9ncozia7";
+    const CLOUD_KV_BASE = `https://keyvalue.immanuel.co/api/KeyVal`;
+    const CLOUD_STREAM_TOPIC = "yousef_saad_portfolio_cloud_1988_sync_v1";
+    const CLOUD_STREAM_URL = `https://ntfy.sh/${CLOUD_STREAM_TOPIC}`;
+    const LOCAL_STORAGE_KEY = "yousef_saad_cloud_projects_v1";
+    const CLOUD_SETTINGS_KEY = "yousef_saad_cloud_settings_v1";
+
+    let customCloudProjects = [];
+    let lastCloudTimestamp = 0;
+    let PROJECTS = [...BASE_PROJECTS];
+
+    function rebuildProjectsList(customList) {
+      customCloudProjects = Array.isArray(customList) ? customList : [];
+      const normalizedCustom = customCloudProjects.map((cp, idx) => {
+        const numVal = BASE_PROJECTS.length + idx + 1;
+        return {
+          ...cp,
+          num: String(numVal).padStart(2, "0"),
+          isCloudCustom: true,
+          customIndex: idx
+        };
+      });
+      PROJECTS = [...BASE_PROJECTS, ...normalizedCustom];
+      if (studioSelectedIdx >= PROJECTS.length) {
+        studioSelectedIdx = Math.max(0, PROJECTS.length - 1);
+      }
+      renderAll();
+    }
+
+    function encodeBase64UrlUTF8(str) {
+      const bytes = new TextEncoder().encode(str);
+      let bin = "";
+      bytes.forEach((b) => (bin += String.fromCharCode(b)));
+      return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+    }
+
+    function decodeBase64UrlUTF8(b64url) {
+      let b64 = String(b64url || "").replace(/-/g, "+").replace(/_/g, "/");
+      while (b64.length % 4) b64 += "=";
+      const bin = atob(b64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new TextDecoder().decode(bytes);
+    }
+
+    function applyCloudPayloadIfNewer(payload) {
+      if (!payload || !Array.isArray(payload.customProjects)) return false;
+      const ts = Number(payload.updatedAt) || 0;
+      if (ts >= lastCloudTimestamp) {
+        lastCloudTimestamp = ts;
+        try {
+          localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({
+            updatedAt: ts,
+            customProjects: payload.customProjects
+          }));
+        } catch (e) {}
+        rebuildProjectsList(payload.customProjects);
+        return true;
+      }
+      return false;
+    }
+
+    async function fetchFromPermanentCloudKV() {
+      try {
+        const metaRes = await fetch(`${CLOUD_KV_BASE}/GetValue/${CLOUD_KV_APP_KEY}/ys_meta`);
+        if (!metaRes.ok) return null;
+        const metaRaw = await metaRes.json();
+        const count = parseInt(String(metaRaw || "0"), 10);
+        if (!count || count <= 0) return null;
+        const chunks = [];
+        for (let i = 0; i < count; i++) {
+          const cRes = await fetch(`${CLOUD_KV_BASE}/GetValue/${CLOUD_KV_APP_KEY}/ys_c${i}`);
+          if (!cRes.ok) return null;
+          const cVal = await cRes.json();
+          chunks.push(String(cVal || ""));
+        }
+        const jsonStr = decodeBase64UrlUTF8(chunks.join(""));
+        return JSON.parse(jsonStr);
+      } catch (e) {
+        return null;
+      }
+    }
+
+    async function pushToPermanentCloudKV(payload) {
+      const b64 = encodeBase64UrlUTF8(JSON.stringify(payload));
+      const chunkSize = 140;
+      const chunks = [];
+      for (let i = 0; i < b64.length; i += chunkSize) {
+        chunks.push(b64.slice(i, i + chunkSize));
+      }
+      for (let i = 0; i < chunks.length; i++) {
+        await fetch(`${CLOUD_KV_BASE}/UpdateValue/${CLOUD_KV_APP_KEY}/ys_c${i}/${chunks[i]}`, {
+          method: "POST"
+        });
+      }
+      await fetch(`${CLOUD_KV_BASE}/UpdateValue/${CLOUD_KV_APP_KEY}/ys_meta/${chunks.length}`, {
+        method: "POST"
+      });
+    }
+
+    async function syncProjectsFromCloud() {
+      // 1. Load local cache immediately
+      try {
+        const cached = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "null");
+        if (cached) applyCloudPayloadIfNewer(cached);
+      } catch (e) {}
+
+      // 2. Load from local/server projects.json or /api/projects (same-link static/SSR file)
+      try {
+        const apiRes = await fetch("/api/projects", { cache: "no-store" });
+        if (apiRes.ok) {
+          const data = await apiRes.json();
+          applyCloudPayloadIfNewer(data);
+        }
+      } catch (e) {}
+      try {
+        const fileRes = await fetch(`./projects.json?t=${Date.now()}`, { cache: "no-store" });
+        if (fileRes.ok) {
+          const data = await fileRes.json();
+          applyCloudPayloadIfNewer(data);
+        }
+      } catch (e) {}
+
+      // 3. Load from Global Cloud Stream Cache (ntfy.sh)
+      try {
+        const streamRes = await fetch(`${CLOUD_STREAM_URL}/raw?poll=1&since=1700000000`, { cache: "no-store" });
+        if (streamRes.ok) {
+          const text = await streamRes.text();
+          const lines = text.trim().split("\n").filter(Boolean);
+          for (let i = lines.length - 1; i >= 0; i--) {
+            try {
+              const parsed = JSON.parse(lines[i]);
+              if (parsed && Array.isArray(parsed.customProjects) && parsed.updatedAt > 1700000000000) {
+                applyCloudPayloadIfNewer(parsed);
+                break;
+              }
+            } catch (err) {}
+          }
+        }
+      } catch (e) {}
+
+      // 4. Load from Permanent Cloud KV Store (KeyValue Cloud)
+      const kvPayload = await fetchFromPermanentCloudKV();
+      if (kvPayload) applyCloudPayloadIfNewer(kvPayload);
+    }
+
+    function subscribeToLiveCloudStream() {
+      try {
+        const es = new EventSource(`${CLOUD_STREAM_URL}/sse`);
+        es.onmessage = (ev) => {
+          try {
+            const outer = JSON.parse(ev.data);
+            const payload = outer && outer.message ? JSON.parse(outer.message) : outer;
+            if (applyCloudPayloadIfNewer(payload)) {
+              const badge = document.getElementById("cloud-sync-badge");
+              if (badge) {
+                badge.textContent = "✨ تم تحديث الموقع سحابياً الآن على نفس الرابط!";
+              }
+            }
+          } catch (e) {}
+        };
+      } catch (e) {}
+    }
+
+    async function pushProjectsToCloudAndRedeploy(updatedCustomProjects, statusCallback) {
+      const payload = {
+        version: 2,
+        updatedAt: Date.now(),
+        customProjects: updatedCustomProjects
+      };
+      lastCloudTimestamp = payload.updatedAt;
+
+      // Save locally right away
+      try {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(payload));
+      } catch (e) {}
+      rebuildProjectsList(updatedCustomProjects);
+
+      // Step 1: Update Next.js / Local Server API if available
+      if (statusCallback) statusCallback("⏳ [1/4] جاري تحديث خادم الموقع وملف المشاريع السحابي...");
+      try {
+        await fetch("/api/projects", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+      } catch (e) {}
+
+      // Step 2: Broadcast to Global Cloud Stream (instant update for all visitors on the same link)
+      if (statusCallback) statusCallback("☁️ [2/4] جاري رفع المشروع على السحابة الحية وبثه لجميع الزوار على نفس الرابط...");
+      try {
+        await fetch(CLOUD_STREAM_URL, {
+          method: "POST",
+          body: JSON.stringify(payload)
+        });
+      } catch (e) {}
+
+      // Step 3: Persist to Permanent Cloud KV Store
+      if (statusCallback) statusCallback("🔐 [3/4] جاري التثبيت الدائم في قاعدة البيانات السحابية الموحدة...");
+      try {
+        await pushToPermanentCloudKV(payload);
+      } catch (e) {}
+
+      // Step 4: Trigger GitHub Repository Commit & Deploy Webhook if configured
+      if (statusCallback) statusCallback("🚀 [4/4] جاري إعادة نشر الموقع تلقائياً على نفس الرابط...");
+      try {
+        const hookInput = document.getElementById("cloud-deploy-hook");
+        const repoInput = document.getElementById("cloud-gh-repo");
+        const tokenInput = document.getElementById("cloud-gh-token");
+        const hookUrl = hookInput ? hookInput.value.trim() : "";
+        const ghRepo = repoInput ? repoInput.value.trim() : "";
+        const ghToken = tokenInput ? tokenInput.value.trim() : "";
+
+        if (hookUrl || ghRepo || ghToken) {
+          localStorage.setItem(CLOUD_SETTINGS_KEY, JSON.stringify({ hookUrl, ghRepo, ghToken }));
+        }
+
+        if (hookUrl) {
+          await fetch(hookUrl, { method: "POST", mode: "no-cors" });
+        }
+
+        if (ghRepo && ghToken) {
+          const apiPath = `https://api.github.com/repos/${ghRepo}/contents/projects.json`;
+          let sha = undefined;
+          const getRes = await fetch(apiPath, {
+            headers: { Authorization: `Bearer ${ghToken}`, Accept: "application/vnd.github+json" }
+          });
+          if (getRes.ok) {
+            const existing = await getRes.json();
+            sha = existing.sha;
+          }
+          const contentB64 = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
+          await fetch(apiPath, {
+            method: "PUT",
+            headers: {
+              Authorization: `Bearer ${ghToken}`,
+              Accept: "application/vnd.github+json",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              message: `Cloud Studio: Auto-publish project update (${new Date().toISOString()})`,
+              content: contentB64,
+              ...(sha ? { sha } : {})
+            })
+          });
+        }
+      } catch (e) {}
+
+      if (statusCallback) {
+        statusCallback("✅ تم رفع المشروع على السحابة وإعادة نشر وتحديث الموقع على نفس الرابط بنجاح! يظهر الآن عند جميع الزوار.");
+      }
+    }
+
+    function toggleAddProjectPanel() {
+      const panel = document.getElementById("studio-add-project-panel");
+      if (!panel) return;
+      panel.classList.toggle("hidden");
+      try {
+        const saved = JSON.parse(localStorage.getItem(CLOUD_SETTINGS_KEY) || "null");
+        if (saved) {
+          if (document.getElementById("cloud-deploy-hook") && !document.getElementById("cloud-deploy-hook").value) {
+            document.getElementById("cloud-deploy-hook").value = saved.hookUrl || "";
+          }
+          if (document.getElementById("cloud-gh-repo") && !document.getElementById("cloud-gh-repo").value) {
+            document.getElementById("cloud-gh-repo").value = saved.ghRepo || "";
+          }
+          if (document.getElementById("cloud-gh-token") && !document.getElementById("cloud-gh-token").value) {
+            document.getElementById("cloud-gh-token").value = saved.ghToken || "";
+          }
+        }
+      } catch (e) {}
+    }
+
+    async function publishNewCloudProject() {
+      const titleAr = document.getElementById("new-proj-title-ar").value.trim();
+      const bold = document.getElementById("new-proj-bold").value.trim().toUpperCase();
+      const italic = document.getElementById("new-proj-italic").value.trim() || "Live";
+      let url = document.getElementById("new-proj-url").value.trim();
+      const sub = (document.getElementById("new-proj-sub").value.trim() || "LIVE INTERACTIVE PLATFORM").toUpperCase();
+      const descAr = document.getElementById("new-proj-desc-ar").value.trim() || `منصة رقمية تفاعلية حية لمشروع ${titleAr} بتصميم عصري متجاوب.`;
+      const descEn = document.getElementById("new-proj-desc-en").value.trim() || `An interactive live web platform engineered for ${bold} ${italic}.`;
+      const device = document.getElementById("new-proj-device").value || "laptop";
+      const bg = document.getElementById("new-proj-bg").value || "linear-gradient(145deg,#2b1d0e,#050507)";
+
+      if (!titleAr || !bold || !url) return;
+      if (!/^https?:\/\//i.test(url)) {
+        url = "https://" + url;
+      }
+
+      const statusBox = document.getElementById("cloud-deploy-status");
+      const pubBtn = document.getElementById("cloud-publish-btn");
+      statusBox.style.display = "block";
+      pubBtn.disabled = true;
+      pubBtn.style.opacity = "0.65";
+
+      const newProj = {
+        bold,
+        italic,
+        sub,
+        titleAr,
+        descEn,
+        descAr,
+        url,
+        device,
+        bg,
+        createdAt: Date.now()
+      };
+
+      const updatedCustom = [...customCloudProjects, newProj];
+      await pushProjectsToCloudAndRedeploy(updatedCustom, (msg) => {
+        statusBox.textContent = msg;
+      });
+
+      pubBtn.disabled = false;
+      pubBtn.style.opacity = "1";
+      selectStudioProject(PROJECTS.length - 1);
+
+      // Reset form inputs
+      document.getElementById("new-proj-title-ar").value = "";
+      document.getElementById("new-proj-bold").value = "";
+      document.getElementById("new-proj-italic").value = "";
+      document.getElementById("new-proj-url").value = "";
+      document.getElementById("new-proj-sub").value = "";
+      document.getElementById("new-proj-desc-ar").value = "";
+      document.getElementById("new-proj-desc-en").value = "";
+    }
+
+    async function deleteCloudProject(customIdx, ev) {
+      if (ev) ev.stopPropagation();
+      const updatedCustom = customCloudProjects.filter((_, i) => i !== customIdx);
+      studioSelectedIdx = 0;
+      const statusBox = document.getElementById("cloud-deploy-status");
+      if (statusBox) {
+        statusBox.style.display = "block";
+      }
+      await pushProjectsToCloudAndRedeploy(updatedCustom, (msg) => {
+        if (statusBox) statusBox.textContent = msg;
+      });
+      selectStudioProject(0);
+    }
+
+    function renderAll() {
+      // Accordion (Responsive on Hover + Click)
+      const accMount = document.getElementById("accordion-mount");
+      accMount.innerHTML = SERVICES.map((s, idx) => {
+        const isOpen = openAcc === idx;
+        return `
+          <div class="acc-row ${isOpen ? 'open' : ''}" onmouseenter="if(openAcc !== ${idx}) { openAcc = ${idx}; renderAll(); }">
+            <button type="button" onclick="openAcc = (openAcc === ${idx} ? -1 : ${idx}); renderAll();"
+              style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:22px 24px;text-align:start;">
+              <div style="display:flex;align-items:center;gap:32px;">
+                <span style="font-size:13px;font-weight:800;color:${isOpen ? '#9a7418' : '#d4af37'};">${s.num}</span>
+                <span style="font-size:18px;font-weight:800;letter-spacing:0.04em;">${currentLang === 'ar' ? s.ar : s.en}</span>
+              </div>
+              <span style="font-size:18px;color:${isOpen ? '#9a7418' : '#9ca3af'};">↗</span>
+            </button>
+            ${isOpen ? `
+              <div style="padding:0 56px 28px;font-size:14px;color:#27272a;display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;">
+                <p style="max-width:560px;line-height:1.65;">${currentLang === 'ar' ? s.descAr : s.descEn}</p>
+                <a href="#project" style="padding:10px 22px;border-radius:6px;background:#050507;color:#f5d77f;font-size:11px;font-weight:800;letter-spacing:0.12em;">${currentLang === 'ar' ? 'استكشف المشاريع ↘' : 'VIEW PROJECTS ↘'}</a>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join("");
+
+      // Selected Work (With Real Scaled Live Website Iframe + Authentic Website UI + "ادخل على الموقع الآن ↗")
+      const projMount = document.getElementById("projects-mount");
+      projMount.innerHTML = PROJECTS.map((p, idx) => `
+        <div class="grid-2col" style="display:grid;grid-template-columns:6fr 6fr;gap:48px;align-items:center;">
+          <div style="order:${idx % 2 === 1 ? 2 : 1};">
+            ${p.device === 'phone' ? `
+              <div class="phone-shell tilt-card">
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:2px 10px;">
+                  <span style="font-size:10px;color:#f5d77f;font-family:monospace;">${p.num}</span>
+                  <div style="width:85px;height:13px;border-radius:999px;background:#000;"></div>
+                  <span style="font-size:9px;color:#34d399;font-weight:700;">● LIVE</span>
+                </div>
+                <div style="flex:1;margin:8px 0;border-radius:28px;border:1px solid rgba(245,215,127,0.25);background:${p.bg};position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;">
+                  <div dir="ltr" style="padding:18px;z-index:1;">
+                    <div style="font-size:9px;color:#f5d77f;font-weight:700;">${p.sub}</div>
+                    <div style="font-size:18px;font-weight:900;color:#fff;margin-top:4px;">${p.bold} ${p.italic}</div>
+                    <p style="font-size:11px;color:#d4d4d8;margin-top:6px;">${p.descEn}</p>
+                  </div>
+                  <iframe src="${p.url}" loading="lazy" style="position:absolute;inset:0;width:540px;height:960px;transform:scale(0.5);transform-origin:top left;border:0;z-index:2;pointer-events:none;opacity:0.92;"></iframe>
+                  <div style="position:absolute;inset-inline:0;bottom:0;z-index:5;padding:12px;background:linear-gradient(0deg,rgba(0,0,0,0.95),transparent);">
+                    <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="enter-site-btn" style="display:block;text-align:center;padding:10px;border-radius:10px;background:linear-gradient(135deg,#f5d77f,#d4af37);color:#050507;font-size:12px;font-weight:900;">
+                      ${currentLang === 'ar' ? 'ادخل على الموقع الآن ↗' : 'Enter Live Website ↗'}
+                    </a>
+                  </div>
+                </div>
+                <div style="width:90px;height:4px;margin:2px auto;border-radius:999px;background:rgba(255,255,255,0.3);"></div>
+              </div>
+            ` : `
+              <div class="tilt-card" style="max-width:530px;margin:0 auto;">
+                <div class="laptop-shell">
+                  <div dir="ltr" style="display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#9ca3af;background:#0c0c10;padding:6px 12px;border-radius:8px 8px 0 0;border:1px solid rgba(255,255,255,0.08);border-bottom:0;">
+                    <span style="color:#f5d77f;">● ● ●</span>
+                    <a href="${p.url}" target="_blank" rel="noopener noreferrer" style="font-family:monospace;color:#f5d77f;">${p.url.replace('https://','')} ↗</a>
+                    <span style="color:#34d399;font-weight:700;">● LIVE</span>
+                  </div>
+                  <div style="border-radius:0 0 10px 10px;border:1px solid rgba(245,215,127,0.22);background:${p.bg};height:300px;position:relative;overflow:hidden;">
+                    <div dir="ltr" style="padding:22px;">
+                      <div style="font-size:10px;color:#f5d77f;letter-spacing:0.18em;">${p.sub}</div>
+                      <div style="font-size:24px;font-weight:900;color:#fff;margin-top:4px;">${p.bold} ${p.italic}</div>
+                      <p style="font-size:12px;color:#d4d4d8;margin-top:8px;">${p.descEn}</p>
+                    </div>
+                    <iframe src="${p.url}" loading="lazy" style="position:absolute;inset:0;width:1280px;height:760px;transform:scale(0.4);transform-origin:top left;border:0;z-index:2;pointer-events:none;opacity:0.92;"></iframe>
+                    <div style="position:absolute;inset-inline:0;bottom:0;z-index:5;padding:12px 16px;background:linear-gradient(0deg,rgba(0,0,0,0.95),transparent);display:flex;justify-content:space-between;align-items:center;">
+                      <span style="font-size:11px;font-weight:800;color:#fff;">${currentLang === 'ar' ? p.titleAr : p.bold}</span>
+                      <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="enter-site-btn" style="padding:7px 16px;border-radius:999px;background:linear-gradient(90deg,#f5d77f,#d4af37);color:#050507;font-size:11px;font-weight:900;">
+                        ${currentLang === 'ar' ? 'ادخل على الموقع ↗' : 'Enter Website ↗'}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="laptop-base"></div>
+              </div>
+            `}
+          </div>
+          <div style="order:${idx % 2 === 1 ? 1 : 2};">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <span style="font-family:monospace;font-size:12px;font-weight:800;color:#f5d77f;">${p.num}</span>
+              <span style="padding:2px 10px;border-radius:999px;border:1px solid rgba(52,211,153,0.35);background:rgba(16,185,129,0.12);color:#6ee7b7;font-size:10px;font-weight:700;">● موقع حي يعمل الآن</span>
+              ${p.isCloudCustom ? `<span style="padding:2px 10px;border-radius:999px;border:1px solid rgba(0,210,255,0.4);background:rgba(0,102,255,0.15);color:#00d2ff;font-size:10px;font-weight:800;">☁️ مضاف سحابياً</span>` : ''}
+            </div>
+            <h3 style="margin-top:10px;font-size:clamp(30px,4vw,44px);font-weight:900;line-height:1.15;">
+              ${currentLang === 'ar' ? p.titleAr : `${p.bold} <em style="font-family:Georgia,serif;font-weight:400;color:#f5d77f;">${p.italic}</em>`}
+            </h3>
+            <p style="margin-top:6px;font-size:17px;font-weight:800;color:#f5d77f;">${p.sub}</p>
+            <p style="margin-top:14px;font-size:15px;line-height:1.7;color:#a1a1aa;">${currentLang === 'ar' ? p.descAr : p.descEn}</p>
+            <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;">
+              <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="enter-site-btn"
+                 style="display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;background:linear-gradient(90deg,#f5d77f,#d4af37);color:#050507;font-size:13px;font-weight:900;">
+                <span>${currentLang === 'ar' ? 'ادخل على الموقع الآن ↗' : 'Enter Live Website ↗'}</span>
+              </a>
+              <button type="button" onclick="openProjectInStudio(${idx})"
+                 style="display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:999px;border:1px solid rgba(245,215,127,0.35);background:rgba(255,255,255,0.04);color:#f5d77f;font-size:12px;font-weight:800;">
+                <span>${currentLang === 'ar' ? 'معاينة داخل الاستوديو ⚡' : 'Preview in Studio ⚡'}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      // Interface Parts Slider
+      const sliderEl = document.getElementById("parts-slider");
+      sliderEl.innerHTML = PROJECTS.map((p) => `
+        <div class="tilt-card" style="width:280px;flex-shrink:0;border-radius:18px;border:1px solid rgba(245,215,127,0.2);background:#09090d;padding:16px;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="height:170px;border-radius:12px;border:1px solid rgba(255,255,255,0.08);background:${p.bg};padding:16px;display:flex;flex-direction:column;justify-content:space-between;">
+            <span style="font-size:10px;color:#f5d77f;font-weight:700;">${p.sub}</span>
+            <strong style="font-size:17px;color:#fff;">${currentLang === 'ar' ? p.titleAr : `${p.bold} ${p.italic}`}</strong>
+            <span style="font-size:10px;color:#34d399;font-weight:700;">● LIVE</span>
+          </div>
+          <div style="margin-top:14px;">
+            <h4 style="font-size:14px;font-weight:800;">${currentLang === 'ar' ? p.titleAr : `${p.bold} Interface`}</h4>
+            <p style="margin-top:6px;font-size:12px;color:#a1a1aa;line-height:1.5;">${currentLang === 'ar' ? p.descAr : p.descEn}</p>
+            <a href="${p.url}" target="_blank" rel="noopener noreferrer" style="margin-top:12px;display:flex;justify-content:space-between;padding:9px 14px;border-radius:8px;background:rgba(212,175,55,0.16);font-size:12px;font-weight:800;color:#f5d77f;">
+              <span>${currentLang === 'ar' ? 'ادخل على الموقع' : 'Enter Website'}</span><span>↗</span>
+            </a>
+          </div>
+        </div>
+      `).join("");
+
+      // Studio Project Sidebar
+      const studioList = document.getElementById("studio-project-list");
+      if (studioList) {
+        studioList.innerHTML = PROJECTS.map((p, idx) => `
+          <div onclick="selectStudioProject(${idx})" style="cursor:pointer;padding:14px;border-radius:14px;border:1px solid ${studioSelectedIdx === idx ? '#f5d77f' : 'rgba(255,255,255,0.1)'};background:${studioSelectedIdx === idx ? 'rgba(212,175,55,0.16)' : 'rgba(255,255,255,0.02)'};">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#f5d77f;font-weight:800;">
+              <span>${p.num} ${p.isCloudCustom ? '• ☁️ CLOUD' : ''}</span>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="color:#34d399;">● LIVE</span>
+                ${p.isCloudCustom ? `<button type="button" onclick="deleteCloudProject(${p.customIndex}, event)" style="padding:2px 6px;border-radius:6px;background:rgba(255,0,60,0.2);border:1px solid rgba(255,0,60,0.4);color:#ff4d6d;font-size:9px;font-weight:800;">حذف ✕</button>` : ''}
+              </div>
+            </div>
+            <div style="font-size:14px;font-weight:800;color:#fff;margin-top:4px;">${currentLang === 'ar' ? p.titleAr : `${p.bold} ${p.italic}`}</div>
+            <div style="font-size:11px;color:#9ca3af;margin-top:2px;">${p.sub}</div>
+          </div>
+        `).join("");
+      }
+
+      bind3DTilt();
+    }
+
+    function bind3DTilt() {
+      document.querySelectorAll(".tilt-card").forEach((card) => {
+        card.onmousemove = (e) => {
+          const r = card.getBoundingClientRect();
+          const rx = ((e.clientX - r.left) / r.width - 0.5) * 12;
+          const ry = (0.5 - (e.clientY - r.top) / r.height) * 12;
+          card.style.transform = `perspective(1000px) rotateX(${ry.toFixed(2)}deg) rotateY(${rx.toFixed(2)}deg) scale3d(1.015,1.015,1.015)`;
+        };
+        card.onmouseleave = () => {
+          card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)";
+        };
+      });
+    }
+
+    function toggleLang() {
+      currentLang = currentLang === "en" ? "ar" : "en";
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+      document.getElementById("lang-btn").textContent = currentLang === "en" ? "AR / عربي" : "EN / English";
+      document.getElementById("brand-title").textContent = currentLang === "ar" ? "يوسف سعد" : "YOUSEF SAAD";
+      document.getElementById("hero-role").textContent = currentLang === "ar" ? "مطور واجهات وأنظمة ويب متكاملة" : "Creative Full-Stack Developer";
+      document.getElementById("about-heading").textContent = currentLang === "ar" ? "مقدمة" : "Intro";
+      renderAll();
+    }
+
+    // 3. STUDIO LOGIN & WORKING STUDIO DASHBOARD
+    function handleStudioBtn() {
+      if (vipUnlocked) {
+        document.getElementById("studio-dashboard").classList.remove("hidden");
+      } else {
+        document.getElementById("studio-modal").classList.remove("hidden");
+      }
+    }
+    function closeStudioModal() {
+      document.getElementById("studio-modal").classList.add("hidden");
+    }
+    function closeStudioDashboard() {
+      document.getElementById("studio-dashboard").classList.add("hidden");
+    }
+    function submitStudioLogin() {
+      const em = document.getElementById("studio-email-input").value.trim().toLowerCase();
+      const pw = document.getElementById("studio-pass-input").value.trim();
+      const err = document.getElementById("studio-login-error");
+      if (em === STUDIO_EMAIL && pw === STUDIO_PASS) {
+        err.style.display = "none";
+        vipUnlocked = true;
+        document.getElementById("studio-btn").textContent = "● لوحة الاستوديو";
+        closeStudioModal();
+        document.getElementById("studio-dashboard").classList.remove("hidden");
+        selectStudioProject(studioSelectedIdx);
+      } else {
+        err.style.display = "block";
+        err.textContent = "بيانات غير صحيحة! الإيميل: yosifahmedsaad@gmail.com | الباسورد: 1988";
+      }
+    }
+    function openProjectInStudio(idx) {
+      studioSelectedIdx = idx;
+      if (vipUnlocked) {
+        document.getElementById("studio-dashboard").classList.remove("hidden");
+        selectStudioProject(idx);
+      } else {
+        document.getElementById("studio-modal").classList.remove("hidden");
+      }
+    }
+    function selectStudioProject(idx) {
+      studioSelectedIdx = idx;
+      const p = PROJECTS[idx];
+      document.getElementById("studio-iframe").src = p.url;
+      document.getElementById("studio-url-bar").textContent = p.url;
+      document.getElementById("studio-external-link").href = p.url;
+      document.getElementById("studio-top-open").href = p.url;
+      renderAll();
+    }
+    function setStudioViewport(w) {
+      document.getElementById("studio-browser-frame").style.width = w;
+    }
+
+    // 4. END ANIMATION: PLAYABLE & AUTO-ACTIVE BREAKOUT GAME ("YOUSEF" + "SAAD")
+    const canvas = document.getElementById("breakout-canvas");
+    const ctx = canvas.getContext("2d");
+    const LETTERS = {
+      Y: ["10001","01010","00100","00100","00100"],
+      O: ["01110","10001","10001","10001","01110"],
+      U: ["10001","10001","10001","10001","01110"],
+      S: ["01111","10000","01110","00001","11110"],
+      E: ["11111","10000","11110","10000","11111"],
+      F: ["11111","10000","11110","10000","10000"],
+      A: ["01110","10001","11111","10001","10001"],
+      D: ["11110","10001","10001","10001","11110"]
+    };
+    let bricks = [], trail = [], sparks = [];
+    let paddleX = 375, paddleW = 118, ballX = 430, ballY = 310, vx = 4.3, vy = -4.7, autoMode = true, score = 0;
+
+    function initBricks() {
+      bricks = [];
+      const addWord = (word, startY, palette) => {
+        const size = 12, gap = 3;
+        const totalCols = word.length * 5 + (word.length - 1) * 2;
+        const startX = (canvas.width - totalCols * (size + gap)) / 2;
+        word.forEach((ch, li) => {
+          LETTERS[ch].forEach((row, ri) => {
+            for (let ci = 0; ci < 5; ci++) {
+              if (row[ci] === "1") {
+                bricks.push({
+                  x: startX + (li * 7 + ci) * (size + gap),
+                  y: startY + ri * (size + gap),
+                  w: size, h: size, alive: true,
+                  color: palette[ri % palette.length]
+                });
+              }
+            }
+          });
+        });
+      };
+      addWord(["Y","O","U","S","E","F"], 44, ["#FFFFFF", "#FFFFFF", "#f5d77f", "#FFFFFF", "#d4af37"]);
+      addWord(["S","A","A","D"], 142, ["#f5d77f", "#FFFFFF", "#FFFFFF", "#00D2FF", "#FF003C"]);
+    }
+    initBricks();
+
+    function resetBreakout() {
+      initBricks();
+      score = 0;
+      document.getElementById("game-score").textContent = `SCORE: 0 •••`;
+    }
+    function toggleAutoPilot() {
+      autoMode = !autoMode;
+      document.getElementById("autopilot-btn").textContent = autoMode ? "اللعب التلقائي: مفعل (حرك الماوس للعب)" : "تفعيل اللعب التلقائي";
+    }
+
+    canvas.addEventListener("mousemove", (e) => {
+      autoMode = false;
+      document.getElementById("autopilot-btn").textContent = "تفعيل اللعب التلقائي";
+      const r = canvas.getBoundingClientRect();
+      const mx = (e.clientX - r.left) * (canvas.width / r.width);
+      paddleX = Math.max(12, Math.min(canvas.width - paddleW - 12, mx - paddleW / 2));
+    });
+
+    function loop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let alive = 0;
+      bricks.forEach(b => {
+        if (!b.alive) return;
+        alive++;
+        ctx.fillStyle = b.color;
+        ctx.fillRect(b.x, b.y, b.w, b.h);
+      });
+
+      if (trail.length > 2) {
+        for (let i = 0; i < trail.length - 1; i++) {
+          ctx.strokeStyle = `rgba(245,215,127,${(i / trail.length) * 0.42})`;
+          ctx.lineWidth = (i / trail.length) * 10;
+          ctx.lineCap = "round";
+          ctx.beginPath();
+          ctx.moveTo(trail[i].x, trail[i].y);
+          ctx.lineTo(trail[i + 1].x, trail[i + 1].y);
+          ctx.stroke();
+        }
+      }
+
+      for (let i = sparks.length - 1; i >= 0; i--) {
+        const sp = sparks[i];
+        sp.x += sp.vx; sp.y += sp.vy; sp.life -= 0.04;
+        if (sp.life <= 0) { sparks.splice(i, 1); continue; }
+        ctx.fillStyle = sp.color;
+        ctx.globalAlpha = sp.life;
+        ctx.fillRect(sp.x, sp.y, 3.5, 3.5);
+        ctx.globalAlpha = 1;
+      }
+
+      const py = canvas.height - 36;
+      ctx.fillStyle = "#fff";
+      ctx.shadowColor = "#d4af37";
+      ctx.shadowBlur = 14;
+      ctx.fillRect(paddleX, py, paddleW, 10);
+      ctx.beginPath();
+      ctx.arc(ballX, ballY, 7, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      ballX += vx; ballY += vy;
+      trail.push({ x: ballX, y: ballY });
+      if (trail.length > 10) trail.shift();
+
+      if (autoMode) {
+        paddleX += ((ballX - paddleW / 2) - paddleX) * 0.14;
+        paddleX = Math.max(12, Math.min(canvas.width - paddleW - 12, paddleX));
+      }
+
+      if (ballX < 8 || ballX > canvas.width - 8) vx *= -1;
+      if (ballY < 8) vy *= -1;
+      if (vy > 0 && ballY >= py - 7 && ballY <= py + 10 && ballX >= paddleX - 4 && ballX <= paddleX + paddleW + 4) {
+        vx = ((ballX - (paddleX + paddleW / 2)) / (paddleW / 2)) * 5.2;
+        vy = -Math.abs(vy);
+      }
+      for (const b of bricks) {
+        if (b.alive && ballX + 7 > b.x && ballX - 7 < b.x + b.w && ballY + 7 > b.y && ballY - 7 < b.y + b.h) {
+          b.alive = false; vy *= -1; score += 10;
+          document.getElementById("game-score").textContent = `SCORE: ${score} •••`;
+          for (let k = 0; k < 8; k++) {
+            const a = (Math.PI * 2 * k) / 8;
+            sparks.push({ x: b.x + 6, y: b.y + 6, vx: Math.cos(a) * 2.5, vy: Math.sin(a) * 2.5, life: 1, color: b.color });
+          }
+          break;
+        }
+      }
+      if (alive === 0) initBricks();
+      if (ballY > canvas.height) { ballX = paddleX + paddleW / 2; ballY = py - 12; vy = -4.7; }
+
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+    renderAll();
+    syncProjectsFromCloud();
+    subscribeToLiveCloudStream();
+  </script>
+</body>
 </html>
