@@ -29,10 +29,10 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p site/public
-          cp index.html script.js style.css supabase-config.js site/
+          cp index.html script.js style.css supabase-config.js projects.json site/
           cp -R public/. site/public/
           mkdir -p site/assets/images
-          cp assets/images/avatar-emperor.png site/assets/images/
+          cp -R assets/images/. site/assets/images/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
